@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\InicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::view('/', "index")->name('index');
+
+Route::controller(InicioController::class)->group(function () {
+    Route::get('gtareas-inicio', 'index')->middleware('auth:sanctum')->name('gtareas-inicio');
+});
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('gtareas-login', 'index')->name('gtareas-login');
+    Route::post('gtareas-login', 'login')->name('gtareas-login');
+    Route::get('gtareas-logout', 'logout')->name('gtareas-login');
 });
