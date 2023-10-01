@@ -46,8 +46,7 @@
             <p>Nombre: {{ auth()->user()->nombre }}
             <p>Apellido: {{ auth()->user()->apellido }}
             <p>Correo electrónico: {{ auth()->user()->email }}
-            <p>Token: {{ auth()->user()->token }}
-            <p>Remember Token: {{ auth()->user()->remember_token }}
+            <p>Token: {{ session()->get('access_token') }}
 
             <br>
                 <hr size="1px" color="black">
@@ -61,15 +60,6 @@
                     <hr size="1px" color="black">
                 <br>
             @enderror
-
-            @if (session('registro_correcto'))
-                <strong>
-                    {{ session()->get('registro_correcto') }}
-                </strong>
-                <br><br>
-                    <hr size="1px" color="black">
-                <br>
-            @endif
 
         </div>
         </center>

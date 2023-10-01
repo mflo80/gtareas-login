@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class LoginController extends Controller
 {
@@ -24,15 +28,20 @@ class LoginController extends Controller
         ]);
 
         $response = Http::post(env('SERVER_GTOAUTH').'/api/auth/login', $datos);
+        $valores = $response->json();
 
         if($response->getStatusCode() == 200 && Auth::attempt($datos)){
             $request->session()->regenerate();
-            return redirect()->to('gtareas-inicio');
+            $token = $valores['token'];
+            $request->session()->put('access_token', $token);
+            return redirect()->route('gtareas-inicio')->withErrors([
+                'message' => $valores['message'],
+            ]);
         }
 
         if($response->getStatusCode() == 401){
             return back()->withErrors([
-                'message' => 'Correo electrónico y/o contraseña incorrectos, intente de nuevo por favor...',
+                'message' => $valores['message'],
             ])->onlyInput('email');
         }
 	}
@@ -43,9 +52,19 @@ class LoginController extends Controller
             return redirect()->to('gtareas-login');
         }
 
-        $token = Auth()->user()->token;
+        $token = $request->session()->get('access_token');
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                            ->get(env('SERVER_GTOAUTH').'/api/auth/logout');
+                    ->get(env('SERVER_GTOAUTH').'/api/auth/logout');
+        $valores = $response->json();
+
+        if($response->getStatusCode() == 401){
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->to('gtareas-login')->withErrors([
+                'message' => $valores['message'],
+            ]);
+        }
 
         Auth::logout();
         $request->session()->invalidate();

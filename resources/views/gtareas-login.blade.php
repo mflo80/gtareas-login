@@ -8,12 +8,12 @@
 </head>
     <body>
         <header>
-            <div class="titulo">
-                <h1>Gestor de Tareas</h1>
+            <div class="logo">
+                <img src="{{ asset('/img/logo.png') }}" alt="LOGO" />
             </div>
         </header>
 
-        <div class="login">
+        <div class="formulario">
             <form action="gtareas-login" method="post">
                 {{ csrf_field() }}
                 <div class="table">
@@ -22,15 +22,17 @@
                     <input type="hidden" name="token" value="{{ csrf_token() }}" />
                     <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
             </form>
+        </div>
 
+        <div class="error_message">
             @error('message')
-                    {{ $message }}
+                {{ $message }}
             @enderror
         </div>
 
         <footer>
             <div class="footer-texto">
-                <p>Todos los derechos reservados ® Marcelo Florio 2023</p>
+                <p>Gestor de Tareas v1.00 ® by Marcelo Florio (2023)</p>
             </div>
         </footer>
     </body>
