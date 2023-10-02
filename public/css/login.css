@@ -16,38 +16,41 @@ html {
 
 body {
 	position: relative;
-	min-height: 100vh;
+	height: 100vh;
 	padding-bottom: 7.5rem;
    	font-size: 2rem;
 	font-family: 'Krub', sans-serif;
 	background: linear-gradient(40deg, rgb(1, 100, 182), rgb(2, 86, 155));
 }
 
-header{
-	width: 100%;
-	height: 9rem;
-   	margin: 0 auto;
-}
-
-.logo{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5rem;
+.contenedor{
+	position: relative;
+	height: 100%;
 }
 
 .formulario {
 	position: absolute;
-	top: 50%;
+    align-items: center;
+	top: 45%;
 	left: 50%;
-	margin: -15rem 0 0 -15rem;
-	width: 30rem;
-	height: 30rem;
+	transform: translate(-50%, -50%);
+	width: 40rem;
+}
+
+.logo{
+	width: 100%;
+	max-width: 40rem;
+}
+
+form{
+	width: 100%;
+	max-width: 40rem;
+	margin-top: -5rem;
 }
 
 input {
-	width: 100%;
+	width: 90%;
+	margin-left: 5%;
 	margin-bottom: 1rem;
 	background: rgba(0,0,0,0.3);
 	outline: none;
@@ -71,8 +74,8 @@ input:focus {
 
 .btn {
     display: inline-block;
-    padding: .2rem .1rem .2rem;
     margin-bottom: 0;
+    padding: .2rem .1rem .2rem;
     font-size: 13px;
     line-height: 1.8rem;
     color: #333333;
@@ -154,7 +157,8 @@ input:focus {
 }
 
 .btn-block {
-    width: 97%;
+	width: 70%;
+	margin-left: 15%;
     display: block;
 }
 
@@ -187,15 +191,23 @@ footer{
 	font-size: 1.5rem;
 }
 
-@media only screen and (max-height: 800px) {
-    .logo {
-        margin-top: 3rem;
-    }
+@media only screen and (max-height: 1000px){
 
 }
 
-@media only screen and (max-width: 800px) {
-    .logo img{
-        width: 40rem;
-    }
+@media only screen and (max-height: 900px){
+
+}
+
+@media only screen and (max-height: 800px){
+
+}
+
+
+@media only screen and (max-height: 700px) {
+
+}
+
+@media only screen and (max-height: 480px) {
+
 }
