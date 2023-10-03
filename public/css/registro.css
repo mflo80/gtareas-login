@@ -56,7 +56,7 @@ input {
 	outline: none;
 	padding: 1rem;
 	font-size: 1.5rem;
-	color: #fff;
+	color: white;
 	text-shadow: .1rem .1rem .1rem rgba(0,0,0,0.3);
 	border: .2rem solid rgba(0,0,0,0.3);
 	border-radius: .4rem;
@@ -75,7 +75,6 @@ input:focus {
 .form-boton{
 	font-size: 1.3rem;
 	color: white;
-
 }
 
 .btn {
@@ -171,7 +170,7 @@ input:focus {
 
 .btn-block {
 	width: 35%;
-	margin-left: 3%;
+	margin-left: 2%;
     margin-top: 1rem;
     display: block;
 }
@@ -222,14 +221,20 @@ footer{
 }
 
 @media only screen and (max-height: 800px){
-
+    .formulario {
+        top: 35%;
+    }
 }
 
 
 @media only screen and (max-height: 700px) {
-
+    .formulario {
+        top: 35%;
+    }
 }
 
 @media only screen and (max-height: 480px) {
-
+    .formulario {
+        top: 35%;
+    }
 }

@@ -248,14 +248,20 @@ footer{
 }
 
 @media only screen and (max-height: 800px){
-
+    .formulario {
+        top: 35%;
+    }
 }
 
 
 @media only screen and (max-height: 700px) {
-
+    .formulario {
+        top: 35%;
+    }
 }
 
 @media only screen and (max-height: 480px) {
-
+    .formulario {
+        top: 35%;
+    }
 }
