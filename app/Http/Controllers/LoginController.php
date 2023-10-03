@@ -27,8 +27,10 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $response = Http::post(env('SERVER_GTOAUTH').'/api/auth/login', $datos);
-        $valores = $response->json();
+        $response = Http::withHeaders([ "Accept" => "application/json"])
+            -> post(getenv("GTOAUTH_LOGIN"), $datos);
+
+        $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200 && Auth::attempt($datos)){
             $request->session()->regenerate();
@@ -54,8 +56,9 @@ class LoginController extends Controller
 
         $token = $request->session()->get('access_token');
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                    ->get(env('SERVER_GTOAUTH').'/api/auth/logout');
-        $valores = $response->json();
+                    ->get(env('SERVER_GTOAUTH'));
+
+        $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 401){
             Auth::logout();

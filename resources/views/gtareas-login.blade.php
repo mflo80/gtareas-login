@@ -12,11 +12,21 @@
 				<img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
 				<form action="gtareas-login" method="post">
 					{{ csrf_field() }}
-					<div class="table">
-						<input id="email" type="email" class="form-control" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" size="35" required autocomplete="email" autofocus>
-						<input type="password" name="password" placeholder="Contraseña" size="30" required>
-						<input type="hidden" name="token" value="{{ csrf_token() }}" />
-						<button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
+					<input id="email" type="email" name="email" placeholder="Correo Electrónico"
+						value="{{ old('email') }}" size="35" required autocomplete="email" autofocus />
+					<input type="password" name="password" placeholder="Contraseña" size="60" required />
+					<input type="hidden" name="token" value="{{ csrf_token() }}" />
+                    <div class="recuerdame">
+                        <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
+                        <input type="checkbox" class="recordar-check" name="recuerdame" />
+                        <label class="recordar-label">Recuérdame</label>
+                    </div>
+					<div class="regis-reset">
+						<p>¿No tienes cuenta en Gestor de Tareas?
+							<a href="gtareas-registro" class="registro">Registrar</a>
+						</p>
+                        <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
+					</div>
 				</form>
 			</div>
 			<div class="error_message">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\RegistroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,9 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('gtareas-login', 'index')->name('gtareas-login');
     Route::post('gtareas-login', 'login')->name('gtareas-login');
     Route::get('gtareas-logout', 'logout')->name('gtareas-login');
+});
+
+Route::controller(RegistroController::class)->group(function () {
+    Route::get('gtareas-registro', 'index')->name('gtareas-registro');
+    Route::post('gtareas-registro', 'registro')->name('gtareas-registro');
 });
