@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('/css/general.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
     <title>Gestor de Tareas</title>
 </head>
@@ -13,8 +14,8 @@
 				<form action="gtareas-login" method="post">
 					{{ csrf_field() }}
 					<input id="email" type="email" name="email" placeholder="Correo Electrónico"
-						value="{{ old('email') }}" size="35" required autocomplete="email" autofocus />
-					<input type="password" name="password" placeholder="Contraseña" size="60" required />
+						value="{{ old('email') }}" size="35" autocomplete="email" autofocus />
+  					<input type="password" name="password" placeholder="Contraseña" size="60" />
 					<input type="hidden" name="token" value="{{ csrf_token() }}" />
                     <div class="recuerdame">
                         <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
@@ -28,11 +29,11 @@
                         <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
 					</div>
 				</form>
-			</div>
-			<div class="error_message">
-				@error('message')
-					{{ $message }}
-				@enderror
+                <div class="error_message">
+                    @foreach ($errors->all() as $message)
+                        <p>{{ $message }}</p>
+                    @endforeach
+                </div>
 			</div>
 		</div>
         <footer>

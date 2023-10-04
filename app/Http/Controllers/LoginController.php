@@ -24,7 +24,10 @@ class LoginController extends Controller
     {
         $datos = $request->validate([
             'email' => ['required', 'email'],
-            'password' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Debe ingresar el correo electrónico.',
+            'password.required' => 'Debe ingresar la contraseña.'
         ]);
 
         $response = Http::withHeaders([ "Accept" => "application/json"])
@@ -50,7 +53,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        if( ! Auth::check() ) {
+        if(!Auth::check() ) {
             return redirect()->to('gtareas-login');
         }
 
@@ -60,18 +63,15 @@ class LoginController extends Controller
 
         $valores = json_decode($response->body(), true);
 
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         if($response->getStatusCode() == 401){
-            Auth::logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
             return redirect()->to('gtareas-login')->withErrors([
                 'message' => $valores['message'],
             ]);
         }
 
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
         return redirect()->to('gtareas-login');
     }
 }
