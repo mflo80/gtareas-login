@@ -59,14 +59,18 @@ class LoginController extends Controller
 
         $token = $request->session()->get('access_token');
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                    ->get(env('SERVER_GTOAUTH'));
+                    ->get(env('GTOAUTH_LOGOUT'));
 
         $valores = json_decode($response->body(), true);
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
-        if($response->getStatusCode() == 401){
+        if(is_null($valores)){
+            Auth::logout();
+            return redirect()->to('gtareas-login');
+        }
+
+        if($response->getStatusCode() >= 200){
+            Auth::logout();
             return redirect()->to('gtareas-login')->withErrors([
                 'message' => $valores['message'],
             ]);
