@@ -14,13 +14,26 @@
 				<form action="gtareas-login" method="post">
 					{{ csrf_field() }}
 					<input id="email" type="email" name="email" placeholder="Correo Electrónico"
-						value="{{ old('email') }}" size="35" autocomplete="email" autofocus />
-  					<input type="password" name="password" placeholder="Contraseña" size="60" />
+                        @if (@isset($datos[0]))
+                            value="{{ $datos[0] }}"
+                        @endif
+                        size="35" autocomplete="email" autofocus />
+  					<input type="password" name="password" placeholder="Contraseña"
+                        @if (@isset($datos[1]))
+                            value="{{ $datos[1] }}"
+                        @endif
+                        size="60" />
 					<input type="hidden" name="token" value="{{ csrf_token() }}" />
                     <div class="recuerdame">
                         <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
-                        <input type="checkbox" class="recordar-check" name="recuerdame" />
-                        <label class="recordar-label">Recuérdame</label>
+                        <label class="recordar-label">
+                            <input type="checkbox" class="recordar-check" name="remember"
+                                @if (@isset($datos[2]))
+                                    checked
+                                @endif
+                            />
+                            <span>Recuérdame</span>
+                        </label>
                     </div>
 					<div class="regis-reset">
 						<p>¿No tienes cuenta en Gestor de Tareas?

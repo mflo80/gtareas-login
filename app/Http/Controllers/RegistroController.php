@@ -34,10 +34,6 @@ class RegistroController extends Controller
 
         $valores = json_decode($response->body(), true);
 
-        //Auth()->logout();
-        //$request->session()->invalidate();
-        //$request->session()->regenerateToken();
-
         if($response->getStatusCode() == 200){
             return redirect()->route('gtareas-login')->withErrors([
                 'message' => $valores['message'],
