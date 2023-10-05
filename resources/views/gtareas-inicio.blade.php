@@ -13,12 +13,10 @@
             <p>
                 «-« {{ auth()->user()->nombre }} {{ auth()->user()->apellido }} »-»
             </p>
-        @endif
 
-        <div class="container">
-            <div class="navbar">
-                <tr>
-                    @if( auth()->check() )
+            <div class="container">
+                <div class="navbar">
+                    <tr>
                         <td>
                             <a href="gtareas-inicio">Inicio</a>
                         </td>
@@ -34,10 +32,10 @@
                         <td>
                             <a href="gtareas-logout">Cerrar Sesión</a>
                         </td>
-                    @endif
-                </tr>
+                    </tr>
+                </div>
             </div>
-        </div>
+        @endif
 
         <div class="container">
             <h3>Bienvenido</h3>
@@ -46,7 +44,6 @@
             <p>Nombre: {{ auth()->user()->nombre }}
             <p>Apellido: {{ auth()->user()->apellido }}
             <p>Correo electrónico: {{ auth()->user()->email }}
-            <p>Token: {{ session()->get('access_token') }}
 
             <br>
                 <hr size="1px" color="black">

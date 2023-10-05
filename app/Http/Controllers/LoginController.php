@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -15,13 +14,9 @@ class LoginController extends Controller
             return redirect()->to('gtareas-inicio');
         }
 
-        $hostname = gethostname();
-
-        if(isset($_COOKIE[$hostname])){
-            if(Cache::get(gethostname())){
-                $datos = Cache::get(gethostname());
-                return view('gtareas-login', ['datos' => $datos]);
-            }
+        if(Cache::get($this->datos_dispositivo())){
+            $datos = Cache::get($this->datos_dispositivo());
+            return view('gtareas-login', ['datos' => $datos]);
         }
 
         return view('gtareas-login');
@@ -42,27 +37,22 @@ class LoginController extends Controller
 
         $valores = json_decode($response->body(), true);
 
-        $remember = $request->has('remember');
-
         if($response->getStatusCode() == 200 && Auth::attempt($credenciales)){
             request()->session()->regenerate();
 
-            $hostname = gethostname();
+            $remember = $request->has('remember');
 
             if(isset($remember)){
                 if($remember){
-                    setcookie($hostname, "login-true", time() + (86400 * 30), "/");
-                    Cache::set($hostname, [$credenciales['email'], $credenciales['password'], true], 3600);
+                    Cache::set($this->datos_dispositivo(), [$credenciales['email'], $credenciales['password'], true], 60*24*365);
                 } else {
-                    unset($_COOKIE[$hostname]);
-                    Cache::delete($hostname);
+                    Cache::delete($this->datos_dispositivo());
                 }
             }
 
-            $token = $valores['token'];
-            $request->session()->put('access_token', $token);
+            Cache::set($this->datos_dispositivo() . 'token', $valores['token'], 60*6);
 
-            return redirect()->route('gtareas-inicio')->withErrors([
+            return redirect()->route('gtareas-inicio')->with([
                 'message' => $valores['message'],
             ]);
         }
@@ -76,11 +66,10 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        if(!Auth::check() ) {
-            return redirect()->to('gtareas-login');
+        if(Cache::get($this->datos_dispositivo().'token')){
+            $token = Cache::get($this->datos_dispositivo().'token');
         }
 
-        $token = $request->session()->get('access_token');
         $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
                     ->get(env('GTOAUTH_LOGOUT'));
 
@@ -89,6 +78,10 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
 
+        if(!isset($valores['message'])){
+            return redirect()->to('gtareas-login');
+        }
+
         if($response->getStatusCode() >= 200){
             return redirect()->to('gtareas-login')->withErrors([
                 'message' => $valores['message'],
@@ -96,5 +89,13 @@ class LoginController extends Controller
         }
 
         return redirect()->to('gtareas-login');
+    }
+
+    public function datos_dispositivo(){
+        $hostname = gethostname();
+        $ip = request()->ip();
+        $agente = request()->userAgent();
+        $usersesion = $hostname . $ip . $agente;
+        return $usersesion;
     }
 }

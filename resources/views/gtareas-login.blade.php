@@ -10,20 +10,27 @@
     <body>
 		<div class="contenedor">
 			<div class="formulario">
-				<img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-				<form action="gtareas-login" method="post">
-					{{ csrf_field() }}
-					<input id="email" type="email" name="email" placeholder="Correo Electrónico"
+
+                <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
+
+                <form action="gtareas-login" method="post">
+
+                    {{ csrf_field() }}
+
+                    <input id="email" type="email" name="email" placeholder="Correo Electrónico"
                         @if (@isset($datos[0]))
                             value="{{ $datos[0] }}"
                         @endif
-                        size="35" autocomplete="email" autofocus />
-  					<input type="password" name="password" placeholder="Contraseña"
+                            size="35" autocomplete="email" autofocus />
+
+                    <input type="password" name="password" placeholder="Contraseña"
                         @if (@isset($datos[1]))
                             value="{{ $datos[1] }}"
                         @endif
-                        size="60" />
-					<input type="hidden" name="token" value="{{ csrf_token() }}" />
+                            size="60" />
+
+                    <input type="hidden" name="token" value="{{ csrf_token() }}" />
+
                     <div class="recuerdame">
                         <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
                         <label class="recordar-label">
@@ -35,25 +42,32 @@
                             <span>Recuérdame</span>
                         </label>
                     </div>
+
 					<div class="regis-reset">
 						<p>¿No tienes cuenta en Gestor de Tareas?
 							<a href="gtareas-registro" class="registro">Registrar</a>
 						</p>
                         <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
 					</div>
+
 				</form>
+
                 <div class="error_message">
                     @foreach ($errors->all() as $message)
                         <p>{{ $message }}</p>
                     @endforeach
                 </div>
-			</div>
-		</div>
+
+            </div>
+
+        </div>
+
         <footer>
             <div class="footer-texto">
                 <p>Gestor de Tareas v1.00 ® by Marcelo Florio (2023)</p>
             </div>
         </footer>
+
     </body>
 </html>
 
