@@ -170,7 +170,7 @@ input:focus {
     display: block;
 }
 
-.error_message{
+.error{
     position: absolute;
     align-items: center;
 	left: 50%;

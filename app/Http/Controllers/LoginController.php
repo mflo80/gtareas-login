@@ -52,7 +52,7 @@ class LoginController extends Controller
 
             Cache::set($this->datos_dispositivo() . 'token', $valores['token'], 60*6);
 
-            return redirect()->route('gtareas-inicio')->with([
+            return redirect()->route('gtareas-inicio')->withErrors([
                 'message' => $valores['message'],
             ]);
         }
@@ -70,10 +70,12 @@ class LoginController extends Controller
             $token = Cache::get($this->datos_dispositivo().'token');
         }
 
-        $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                    ->get(env('GTOAUTH_LOGOUT'));
+        if(isset($token)){
+            $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
+            ->get(env('GTOAUTH_LOGOUT'));
 
-        $valores = json_decode($response->body(), true);
+            $valores = json_decode($response->body(), true);
+        }
 
         Auth::logout();
         $request->session()->invalidate();

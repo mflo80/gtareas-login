@@ -1,26 +1,11 @@
-.recuerdame{
-    width: 90%;
-    font-size: 1.3rem;
-    margin-left: 10%;
-    margin-top: 1rem;
-    display: flex;
-}
-
-.recordar-check{
+.btn-grupo{
     width: auto;
-    margin-top: 1rem;
-    margin-left: 4rem;
-}
-
-.recordar-label{
-	display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 0.5rem;
-    color: white;
 }
 
-.login-mensajes{
+.regis-reset{
     width: 40rem;
     height: 5rem;
     margin-top: 3rem;
@@ -28,19 +13,25 @@
     font-size: 1.3rem;
 }
 
-.login-mensajes p{
-	color: white;
+
+.instrucciones{
+    color: bisque;
+}
+
+.registrar{
+    color: white;
+    margin-top: 3rem;
 }
 
 .registro{
     color: yellow;
 }
 
-.restablecer{
+.login{
     color: orange;
 }
 
-.error{
+.error_message{
     margin-top: 5rem;
 }
 

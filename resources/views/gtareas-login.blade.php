@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('/css/general.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <title>Gestor de Tareas</title>
+    <title>Gestor de Tareas - Iniciar Sesión</title>
 </head>
     <body>
 		<div class="contenedor">
@@ -43,7 +43,7 @@
                         </label>
                     </div>
 
-					<div class="regis-reset">
+					<div class="login-mensajes">
 						<p>¿No tienes cuenta en Gestor de Tareas?
 							<a href="gtareas-registro" class="registro">Registrar</a>
 						</p>
@@ -52,7 +52,7 @@
 
 				</form>
 
-                <div class="error_message">
+                <div class="error">
                     @foreach ($errors->all() as $message)
                         <p>{{ $message }}</p>
                     @endforeach
