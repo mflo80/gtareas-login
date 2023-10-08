@@ -19,22 +19,23 @@
                 <div class="btn-grupo">
                     <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
                 </div>
-
-                <div class="login-mensajes">
-                    <p>¿No tienes cuenta en Gestor de Tareas?
-                        <a href="gtareas-registro" class="registro">Registrar</a>
-                    </p>
-                    <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
-                </div>
-
             </form>
 
-            <div class="error">
-                @foreach ($errors->all() as $message)
-                    <p id="error">{{ $message }}</p>
-                    @break
-                @endforeach
-            </div>
+            <div class="texto-grupo">
+                <p>¿No tienes cuenta en Gestor de Tareas?
+                    <a href="gtareas-registro" class="registro-link">Registrar</a>
+                </p>
+
+                <a href="gtareas-restablecer" class="restablecer-link">Restablecer contraseña</a>
+
+                <div class="error-grupo">
+                    <div class="error-mensaje">
+                        @foreach ($errors->all() as $message)
+                            <p id="error">{{ $message }}</p>
+                        @break
+                    @endforeach
+                </div>
+            </div> <!-- Grupo Texto -->
         </div> <!-- Fin Formulario -->
     </div> <!-- Fin Contenedor -->
 

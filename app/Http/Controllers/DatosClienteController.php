@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DatosController extends Controller
+class DatosClienteController extends Controller
 {
     public function datos_token(){
         $email = auth()->user()->email;

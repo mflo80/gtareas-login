@@ -26,23 +26,23 @@
                 </div>
             </form>
 
-            <div class="registro-mensajes">
-                <div class="registro-error">
-                    @foreach ($errors->all() as $message)
-                        <p id="error">{{ $message }}</p>
-                    @break
-                @endforeach
-            </div>
-
-            <div class="instrucciones">
+            <div class="texto-grupo">
                 <p>Una vez realizado el registro, deberá de confirmar su cuenta de</p>
                 <p>correo electrónico, ingresando a este y siguiendo los pasos en</p>
                 <p>el mensaje que le será enviado.</p>
-            </div>
 
-            <div class="login">
-                <a href="gtareas-login">Iniciar Sesión</a>
-            </div>
+                <div class="login-link">
+                    <a href="gtareas-login">Iniciar Sesión</a>
+                </div>
+
+                <div class="error-grupo">
+                    <div class="error-mensaje">
+                        @foreach ($errors->all() as $message)
+                            <p id="error">{{ $message }}</p>
+                        @break
+                    @endforeach
+                </div>
+            </div> <!-- Grupo Texto -->
         </div> <!-- Fin Formulario -->
     </div> <!-- Fin Contenedor -->
 

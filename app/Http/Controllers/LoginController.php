@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -36,8 +35,9 @@ class LoginController extends Controller
         if($response->getStatusCode() == 200 && Auth::attempt($credenciales)){
             request()->session()->regenerate();
 
-            $datos = (new DatosController)->datos_token();
-            Cache::set($datos, $valores['token'], 60*2);
+			$datosCliente = (new DatosClienteController)->datos_token();
+			$token = $valores['token'];
+            Cache::set($datosCliente, $token, 60*6);
 
             return redirect()->route('gtareas-inicio')->withErrors([
                 'message' => $valores['message'],
@@ -53,9 +53,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $datos = (new DatosController)->datos_token();
-        if(Cache::get($datos)){
-            $token = Cache::get($datos);
+        $datosCliente = (new DatosClienteController)->datos_token();
+        if(Cache::get($datosCliente)){
+            $token = Cache::get($datosCliente);
         }
 
         if(isset($token)){
@@ -63,6 +63,10 @@ class LoginController extends Controller
             ->get(env('GTOAUTH_LOGOUT'));
 
             $valores = json_decode($response->body(), true);
+
+            if(Cache::get($datosCliente)){
+                Cache::delete($datosCliente);
+            }
         }
 
         Auth::logout();

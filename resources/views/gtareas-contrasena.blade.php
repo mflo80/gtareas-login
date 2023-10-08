@@ -18,21 +18,21 @@
                 </div>
             </form>
 
-            <div class="registro-mensajes">
-                <div class="registro-error">
-                    @foreach ($errors->all() as $message)
-                        <p id="error">{{ $message }}</p>
-                    @break
-                @endforeach
-            </div>
-
-            <div class="instrucciones">
+            <div class="texto-grupo">
                 <p>Ingrese la nueva contraseña, para realizar el cambio.</p>
-            </div>
 
-            <div class="login">
-                <a href="gtareas-login">Iniciar Sesión</a>
-            </div>
+                <div class="login">
+                    <a href="gtareas-login">Iniciar Sesión</a>
+                </div>
+
+                <div class="registro-mensajes">
+                    <div class="registro-error">
+                        @foreach ($errors->all() as $message)
+                            <p id="error">{{ $message }}</p>
+                        @break
+                    @endforeach
+                </div>
+            </div> <!-- Grupo Texto -->
         </div> <!-- Fin Formulario -->
     </div> <!-- Fin Contenedor -->
 

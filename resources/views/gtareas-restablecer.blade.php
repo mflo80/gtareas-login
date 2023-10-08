@@ -16,33 +16,30 @@
                             onClick="window.location.href='gtareas-login';">
                     <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Enviar</button>
                 </div>
+            </form>
 
-                <div class="regis-reset">
-                    <div class="restablecer-error">
+            <div class="texto-grupo">
+                <p>Para restablecer su contraseña, ingrese su correo electrónico</p>
+                <p>y seleccione enviar, para que le lleguen a éste las instrucciones.</p>
+
+                <p class="registrar">¿No tienes cuenta en Gestor de Tareas?
+                    <a href="gtareas-registro" class="registro">Registrar</a>
+                </p>
+
+                <div class="login-link">
+                    <a href="gtareas-login">Iniciar Sesión</a>
+                </div>
+
+                <div class="error-grupo">
+                    <div class="error-mensaje">
                         @foreach ($errors->all() as $message)
                             <p id="error">{{ $message }}</p>
-                            @break
-                        @endforeach
-                    </div>
-                    <div class="instrucciones">
-                        <p>Para restablecer su contraseña, ingrese su correo electrónico</p>
-                        <p>y seleccione enviar, para que le lleguen a éste las instrucciones.</p>
-                    </div>
-
-                    <p class="registrar">¿No tienes cuenta en Gestor de Tareas?
-                        <a href="gtareas-registro" class="registro">Registrar</a>
-                    </p>
-
-                    <a href="gtareas-login" class="login">Iniciar Sesión</a>
+                        @break
+                    @endforeach
                 </div>
-            </form>
-            <div class="error_message">
-                @foreach ($errors->all() as $message)
-                    <ul><li>{{ $message }}</li></ul>
-                @endforeach
-            </div>
-        </div>
-    </div>
+            </div> <!-- Grupo Texto -->
+        </div> <!-- Fin Formulario -->
+    </div> <!-- Fin Contenedor -->
 
     <script>
         window.document.title = 'Gestor de Tareas - Restablecer Contraseña';
