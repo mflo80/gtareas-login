@@ -21,7 +21,7 @@
             <div class="texto-grupo">
                 <p>Ingrese la nueva contraseña, para realizar el cambio.</p>
 
-                <div class="login">
+                <div class="login-link  ">
                     <a href="gtareas-login">Iniciar Sesión</a>
                 </div>
 
