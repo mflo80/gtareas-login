@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -10,13 +11,8 @@ use Illuminate\Support\Facades\Http;
 class LoginController extends Controller
 {
     public function index(){
-        if( auth()->check() ) {
+        if(auth()->check()) {
             return redirect()->to('gtareas-inicio');
-        }
-
-        if(Cache::get($this->datos_dispositivo())){
-            $datos = Cache::get($this->datos_dispositivo());
-            return view('gtareas-login', ['datos' => $datos]);
         }
 
         return view('gtareas-login');
@@ -40,17 +36,8 @@ class LoginController extends Controller
         if($response->getStatusCode() == 200 && Auth::attempt($credenciales)){
             request()->session()->regenerate();
 
-            $remember = $request->has('remember');
-
-            if(isset($remember)){
-                if($remember){
-                    Cache::set($this->datos_dispositivo(), [$credenciales['email'], $credenciales['password'], true], 60*24*365);
-                } else {
-                    Cache::delete($this->datos_dispositivo());
-                }
-            }
-
-            Cache::set($this->datos_dispositivo() . 'token', $valores['token'], 60*6);
+            $datos = (new DatosController)->datos_token();
+            Cache::set($datos, $valores['token'], 60*2);
 
             return redirect()->route('gtareas-inicio')->withErrors([
                 'message' => $valores['message'],
@@ -66,8 +53,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        if(Cache::get($this->datos_dispositivo().'token')){
-            $token = Cache::get($this->datos_dispositivo().'token');
+        $datos = (new DatosController)->datos_token();
+        if(Cache::get($datos)){
+            $token = Cache::get($datos);
         }
 
         if(isset($token)){
@@ -91,13 +79,5 @@ class LoginController extends Controller
         }
 
         return redirect()->to('gtareas-login');
-    }
-
-    public function datos_dispositivo(){
-        $hostname = gethostname();
-        $ip = request()->ip();
-        $agente = request()->userAgent();
-        $usersesion = $hostname . $ip . $agente;
-        return $usersesion;
     }
 }

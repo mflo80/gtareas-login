@@ -1,73 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <title>Gestor de Tareas - Iniciar Sesión</title>
-</head>
-    <body>
-		<div class="contenedor">
-			<div class="formulario">
+@extends('plantilla')
 
-                <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
+@section('gtareas')
 
-                <form action="gtareas-login" method="post">
+    <div class="contenedor">
+        <div class="formulario">
 
-                    {{ csrf_field() }}
+            <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
 
-                    <input id="email" type="email" name="email" placeholder="Correo Electrónico"
-                        @if (@isset($datos[0]))
-                            value="{{ $datos[0] }}"
-                        @endif
-                            size="35" autocomplete="email" autofocus />
+            <form action="gtareas-login" method="post">
 
-                    <input type="password" name="password" placeholder="Contraseña"
-                        @if (@isset($datos[1]))
-                            value="{{ $datos[1] }}"
-                        @endif
-                            size="60" />
+                {{ csrf_field() }}
 
-                    <input type="hidden" name="token" value="{{ csrf_token() }}" />
+                <input id="email" type="email" name="email" placeholder="Correo Electrónico" size="255" autocomplete="email"
+                    value="{{ old('email') }}" autofocus />
 
-                    <div class="recuerdame">
-                        <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
-                        <label class="recordar-label">
-                            <input type="checkbox" class="recordar-check" name="remember"
-                                @if (@isset($datos[2]))
-                                    checked
-                                @endif
-                            />
-                            <span>Recuérdame</span>
-                        </label>
-                    </div>
+                <input id="password" type="password" name="password" placeholder="Contraseña" size="255" />
 
-					<div class="login-mensajes">
-						<p>¿No tienes cuenta en Gestor de Tareas?
-							<a href="gtareas-registro" class="registro">Registrar</a>
-						</p>
-                        <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
-					</div>
-
-				</form>
-
-                <div class="error">
-                    @foreach ($errors->all() as $message)
-                        <p>{{ $message }}</p>
-                    @endforeach
+                <div class="btn-grupo">
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión</button>
                 </div>
 
+                <div class="login-mensajes">
+                    <p>¿No tienes cuenta en Gestor de Tareas?
+                        <a href="gtareas-registro" class="registro">Registrar</a>
+                    </p>
+                    <a href="gtareas-restablecer" class="restablecer">Restablecer contraseña</a>
+                </div>
+
+            </form>
+
+            <div class="error">
+                @foreach ($errors->all() as $message)
+                    <p id="error">{{ $message }}</p>
+                    @break
+                @endforeach
             </div>
+        </div> <!-- Fin Formulario -->
+    </div> <!-- Fin Contenedor -->
 
-        </div>
+    <script>
+        window.document.title = 'Gestor de Tareas - Iniciar Sesión';
+    </script>
 
-        <footer>
-            <div class="footer-texto">
-                <p>Gestor de Tareas v1.00 ® by Marcelo Florio (2023)</p>
-            </div>
-        </footer>
-
-    </body>
-</html>
-
+@endsection

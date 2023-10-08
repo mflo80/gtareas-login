@@ -15,4 +15,9 @@ class PasswordController extends Controller
     {
         return view('gtareas-codigo');
     }
+
+    public function contrasena()
+    {
+        return view('gtareas-contrasena');
+    }
 }

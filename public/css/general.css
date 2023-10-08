@@ -170,6 +170,13 @@ input:focus {
     display: block;
 }
 
+.btn-grupo{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .error{
     position: absolute;
     align-items: center;

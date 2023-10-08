@@ -5,14 +5,8 @@
     <div class="contenedor">
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-            <form name="registro" action="gtareas-registro" method="post">
+            <form name="contrasena" action="gtareas-codigo" method="post">
                 {{ csrf_field() }}
-
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre" size="255" value="{{ old('nombre') }}" autofocus />
-
-                <input type="text" id="apellido" name="apellido" placeholder="Apellido" size="255" value="{{ old('apellido') }}" />
-
-                <input type="email" id="email" name="email" placeholder="Correo Electrónico" size="255" value="{{ old('email') }}" />
 
                 <input type="password" id="password" name="password" placeholder="Contraseña" size="255" min="6" />
 
@@ -20,9 +14,7 @@
                         placeholder="Confirmar Contraseña" size="255" min="6" />
 
                 <div class="btn-grupo">
-                    <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
-                        onClick="location.href='gtareas-registro'">Borrar</button>
-                    <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Registrar</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Confirmar</button>
                 </div>
             </form>
 
@@ -35,9 +27,7 @@
             </div>
 
             <div class="instrucciones">
-                <p>Una vez realizado el registro, deberá de confirmar su cuenta de</p>
-                <p>correo electrónico, ingresando a este y siguiendo los pasos en</p>
-                <p>el mensaje que le será enviado.</p>
+                <p>Ingrese la nueva contraseña, para realizar el cambio.</p>
             </div>
 
             <div class="login">
@@ -47,7 +37,7 @@
     </div> <!-- Fin Contenedor -->
 
     <script>
-        window.document.title = 'Gestor de Tareas - Registro';
+        window.document.title = 'Gestor de Tareas - Restablecer Contraseña';
     </script>
 
 @endsection
