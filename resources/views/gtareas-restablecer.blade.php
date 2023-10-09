@@ -19,15 +19,17 @@
             </form>
 
             <div class="texto-grupo">
-                <p>Para restablecer su contraseña, ingrese su correo electrónico</p>
-                <p>y seleccione enviar, para que le lleguen a éste las instrucciones.</p>
+                <p class="texto-mensaje">Para restablecer su contraseña, ingrese su correo electrónico</p>
+                <p class="texto-mensaje">y seleccione enviar, para que le lleguen a éste las instrucciones.</p>
 
                 <p class="registrar">¿No tienes cuenta en Gestor de Tareas?
                     <a href="gtareas-registro" class="registro">Registrar</a>
                 </p>
 
                 <div class="login-link">
-                    <a href="gtareas-login">Iniciar Sesión</a>
+                    <p>¿Ya tienes cuenta?
+                        <a href="gtareas-login">Iniciar Sesión</a>
+                    </p>
                 </div>
 
                 <div class="error-grupo">

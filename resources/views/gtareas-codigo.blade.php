@@ -16,11 +16,13 @@
             </form>
 
             <div class="texto-grupo">
-                <p>Ingrese el código que le fue enviado a su correo electrónico,</p>
-                <p>para confirmar el restablecimiento de la contraseña.</p>
+                <p class="texto-mensaje">Ingrese el código que le fue enviado a su correo electrónico,</p>
+                <p class="texto-mensaje">para confirmar el restablecimiento de la contraseña.</p>
 
                 <div class="login-link">
-                    <a href="gtareas-login">Iniciar Sesión</a>
+                    <p>¿Ya tienes cuenta?
+                        <a href="gtareas-login">Iniciar Sesión</a>
+                    </p>
                 </div>
 
                 <div class="error-grupo">

@@ -27,12 +27,14 @@
             </form>
 
             <div class="texto-grupo">
-                <p>Una vez realizado el registro, deberá de confirmar su cuenta de</p>
-                <p>correo electrónico, ingresando a este y siguiendo los pasos en</p>
-                <p>el mensaje que le será enviado.</p>
+                <p class="texto-mensaje">Una vez realizado el registro, deberá de confirmar su cuenta de</p>
+                <p class="texto-mensaje">correo electrónico, ingresando a este y siguiendo los pasos en</p>
+                <p class="texto-mensaje">el mensaje que le será enviado.</p>
 
                 <div class="login-link">
-                    <a href="gtareas-login">Iniciar Sesión</a>
+                    <p>¿Ya tienes cuenta?
+                        <a href="gtareas-login">Iniciar Sesión</a>
+                    </p>
                 </div>
 
                 <div class="error-grupo">

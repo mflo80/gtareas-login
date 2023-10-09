@@ -26,7 +26,9 @@
                     <a href="gtareas-registro" class="registro-link">Registrar</a>
                 </p>
 
-                <a href="gtareas-restablecer" class="restablecer-link">Restablecer contraseña</a>
+                <p>¿Olvidastes la contraseña?
+                    <a href="gtareas-restablecer" class="restablecer-link">Restablecer contraseña</a>
+                </p>
 
                 <div class="error-grupo">
                     <div class="error-mensaje">

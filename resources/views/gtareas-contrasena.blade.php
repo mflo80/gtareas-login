@@ -19,10 +19,12 @@
             </form>
 
             <div class="texto-grupo">
-                <p>Ingrese la nueva contraseña, para realizar el cambio.</p>
+                <p class="texto-mensaje">Ingrese la nueva contraseña, para realizar el cambio.</p>
 
-                <div class="login-link  ">
-                    <a href="gtareas-login">Iniciar Sesión</a>
+                <div class="login-link">
+                    <p>¿Ya tienes cuenta?
+                        <a href="gtareas-login">Iniciar Sesión</a>
+                    </p>
                 </div>
 
                 <div class="registro-mensajes">
