@@ -26,7 +26,7 @@ class RegistroController extends Controller
             'email.unique' => 'El correo electrónico ya se encuentra registrado.',
             'password.required' => 'Debe ingresar la contraseña.',
             'password.min' => 'La contraseña debe contener al menos 6 caracteres.',
-            'password.confirmed' => 'La contraseñas no coinciden.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
         ]);
 
         $response = Http::withHeaders([ "Accept" => "application/json"])

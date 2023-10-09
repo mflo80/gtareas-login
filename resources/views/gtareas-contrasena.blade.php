@@ -8,7 +8,7 @@
             <form name="contrasena" action="gtareas-codigo" method="post">
                 {{ csrf_field() }}
 
-                <input type="password" id="password" name="password" placeholder="Contraseña" size="255" min="6" />
+                <input type="password" id="password" name="password" placeholder="Nueva Contraseña" size="255" min="6" />
 
                 <input type="password" id="password_confirmation" name="password_confirmation"
                         placeholder="Confirmar Contraseña" size="255" min="6" />
