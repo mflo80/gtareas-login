@@ -37,7 +37,7 @@ class LoginController extends Controller
 
 			$datosCliente = (new DatosClienteController)->datos_token();
 			$token = $valores['token'];
-            Cache::set($datosCliente, $token, 60*6);
+            Cache::set($datosCliente, $token, 120);
 
             return redirect()->route('gtareas-inicio')->withErrors([
                 'message' => $valores['message'],
