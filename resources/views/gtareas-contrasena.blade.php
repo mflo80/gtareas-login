@@ -14,7 +14,7 @@
                         placeholder="Confirmar Contraseña" size="255" min="6" />
 
                 <div class="btn-grupo">
-                    <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Confirmar</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Aceptar</button>
                 </div>
             </form>
 
