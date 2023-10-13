@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class PasswordController extends Controller
 {
-    public function restablecer()
+    public function formRestablecer()
     {
         return view('gtareas-restablecer');
     }
 
-    public function enviar(Request $request)
+    public function sendRestablecer(Request $request)
     {
         $credenciales = $request->validate([
             'email' => ['required', 'email', 'string']
@@ -30,12 +30,17 @@ class PasswordController extends Controller
         ])->onlyInput('email');
     }
 
-    public function contrasena($codigo)
+    public function gotoRestablecer()
     {
-        return view('gtareas-contrasena', ['codigo' => $codigo]);
+        return redirect()->route('gtareas-restablecer');
     }
 
-    public function cambiar(Request $request)
+    public function formContrasena($codigo)
+    {
+        return view('gtareas-password', ['codigo' => $codigo]);
+    }
+
+    public function cambiarPassword(Request $request)
     {
         $datos = $request->validate([
             'password' => ['required', 'string', 'min:6', 'confirmed'],

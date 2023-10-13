@@ -25,9 +25,9 @@ Route::controller(RegistroController::class)->group(function () {
 });
 
 Route::controller(PasswordController::class)->group(function () {
-    Route::get('gtareas-restablecer', 'restablecer')->name('gtareas-restablecer');
-    Route::post('gtareas-restablecer', 'enviar');
-    Route::get('gtareas-contrasena', 'restablecer')->name('gtareas-restablecer');
-    Route::get('gtareas-contrasena/{token}', 'contrasena')->name('gtareas-contrasena');
-    Route::post('gtareas-contrasena', 'cambiar');
+    Route::get('gtareas-restablecer', 'formRestablecer')->name('gtareas-restablecer');
+    Route::post('gtareas-restablecer', 'sendRestablecer');
+    Route::get('gtareas-password', 'gotoRestablecer');
+    Route::get('gtareas-password/{token}', 'formPassword')->name('gtareas-password');
+    Route::post('gtareas-password', 'cambiarPassword');
 });
