@@ -13,7 +13,9 @@
                 <input type="password" id="password_confirmation" name="password_confirmation"
                         placeholder="Confirmar Contraseña" size="255" min="6" />
 
-                <input type="hidden" name="codigo" value="{{$codigo}}" />
+                <input type="hidden" name="token" value="{{ $token }}" />
+
+                <input type="hidden" name="email" value="{{ $datos['email'] }}" />
 
                 <div class="btn-grupo">
                     <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Aceptar</button>
@@ -21,6 +23,7 @@
             </form>
 
             <div class="texto-grupo">
+                <p class="texto-mensaje">Hola {{ $datos['nombre'] }} {{ $datos['apellido'] }}.</p>
                 <p class="texto-mensaje">Ingrese la nueva contraseña, para realizar el cambio.</p>
 
                 <div class="login-link">
@@ -29,8 +32,8 @@
                     </p>
                 </div>
 
-                <div class="registro-mensajes">
-                    <div class="registro-error">
+                <div class="error-grupo">
+                    <div class="error-mensaje">
                         @foreach ($errors->all() as $message)
                             <p id="error">{{ $message }}</p>
                         @break

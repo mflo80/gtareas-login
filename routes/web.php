@@ -28,6 +28,6 @@ Route::controller(PasswordController::class)->group(function () {
     Route::get('gtareas-restablecer', 'formRestablecer')->name('gtareas-restablecer');
     Route::post('gtareas-restablecer', 'sendRestablecer');
     Route::get('gtareas-password', 'gotoRestablecer');
-    Route::get('gtareas-password/{token}', 'formPassword')->name('gtareas-password');
+    Route::get('gtareas-password-{token}', 'formPassword')->name('gtareas-password');
     Route::post('gtareas-password', 'cambiarPassword');
 });

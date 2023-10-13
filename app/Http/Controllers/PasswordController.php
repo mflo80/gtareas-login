@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class PasswordController extends Controller
@@ -25,6 +26,10 @@ class PasswordController extends Controller
 
         $valores = json_decode($response->body(), true);
 
+        if($response->getStatusCode() == 200){
+            Cache::set($valores['token'], $valores['datos'], 15);
+        }
+
         return back()->withErrors([
             'message' => $valores['message'],
         ])->onlyInput('email');
@@ -35,15 +40,24 @@ class PasswordController extends Controller
         return redirect()->route('gtareas-restablecer');
     }
 
-    public function formContrasena($codigo)
+    public function formPassword($token)
     {
-        return view('gtareas-password', ['codigo' => $codigo]);
+        if(Cache::get($token)){
+            $datos = Cache::get($token);
+            return view('gtareas-password', ['token' => $token])->with('datos', $datos);
+        }
+
+        return redirect()->route('gtareas-login')->withErrors([
+            'message' => 'Plazo vencido, solicite de nuevo restablecer la contraseña.',
+        ]);
     }
 
     public function cambiarPassword(Request $request)
     {
         $datos = $request->validate([
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
         ], [
             'password.required' => 'Debe ingresar la contraseña.',
             'password.min' => 'La contraseña debe contener al menos 6 caracteres.',
@@ -55,10 +69,14 @@ class PasswordController extends Controller
 
         $valores = json_decode($response->body(), true);
 
+        if(Cache::get($datos['token'])){
+            Cache::delete($datos['token']);
+        }
+
         if($response->getStatusCode() == 200){
             return redirect()->route('gtareas-login')->withErrors([
                 'message' => $valores['message'],
-            ]);
+            ])->onlyInput('email');
         }
     }
 }
