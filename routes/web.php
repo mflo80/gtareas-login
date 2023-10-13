@@ -16,7 +16,7 @@ Route::controller(InicioController::class)->group(function () {
 Route::controller(LoginController::class)->group(function () {
     Route::get('gtareas-login', 'index')->name('gtareas-login');
     Route::post('gtareas-login', 'login');
-    Route::get('gtareas-logout', 'logout')->name('gtareas-logout');
+    Route::get('gtareas-logout', 'logout')->middleware('auth:sanctum')->name('gtareas-logout');
 });
 
 Route::controller(RegistroController::class)->group(function () {
@@ -27,10 +27,7 @@ Route::controller(RegistroController::class)->group(function () {
 Route::controller(PasswordController::class)->group(function () {
     Route::get('gtareas-restablecer', 'restablecer')->name('gtareas-restablecer');
     Route::post('gtareas-restablecer', 'enviar');
-//    Route::get('gtareas-codigo', 'codigo')->middleware('auth:sanctum')->name('gtareas-codigo');
-    Route::get('gtareas-codigo', 'codigo')->name('gtareas-codigo');
-    Route::post('gtareas-codigo', 'confirmar');
-//    Route::get('gtareas-contrasena', 'contrasena')->middleware('auth:sanctum')->name('gtareas-contrasena');
-    Route::get('gtareas-contrasena', 'contrasena')->name('gtareas-contrasena');
+    Route::get('gtareas-contrasena', 'restablecer')->name('gtareas-restablecer');
+    Route::get('gtareas-contrasena/{token}', 'contrasena')->name('gtareas-contrasena');
     Route::post('gtareas-contrasena', 'cambiar');
 });

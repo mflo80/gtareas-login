@@ -54,6 +54,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $datosCliente = (new DatosClienteController)->datos_token();
+
         if(Cache::get($datosCliente)){
             $token = Cache::get($datosCliente);
         }
@@ -69,7 +70,7 @@ class LoginController extends Controller
             }
         }
 
-        Auth::logout();
+        //Auth::logout();
         $request->session()->invalidate();
 
         if(!isset($valores['message'])){

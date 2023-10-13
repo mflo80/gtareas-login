@@ -30,7 +30,7 @@ class RegistroController extends Controller
         ]);
 
         $response = Http::withHeaders([ "Accept" => "application/json"])
-        -> post(getenv("GTOAUTH_REGISTRO"), $datos);
+        -> post(getenv("GTOAUTH_USUARIOS"), $datos);
 
         $valores = json_decode($response->body(), true);
 

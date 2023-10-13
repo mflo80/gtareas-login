@@ -5,13 +5,15 @@
     <div class="contenedor">
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-            <form name="contrasena" action="gtareas-codigo" method="post">
+            <form name="contrasena" action="gtareas-contrasena" method="post">
                 {{ csrf_field() }}
 
                 <input type="password" id="password" name="password" placeholder="Nueva Contraseña" size="255" min="6" />
 
                 <input type="password" id="password_confirmation" name="password_confirmation"
                         placeholder="Confirmar Contraseña" size="255" min="6" />
+
+                <input type="hidden" name="codigo" value="{{$codigo}}" />
 
                 <div class="btn-grupo">
                     <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Aceptar</button>
