@@ -11,7 +11,9 @@ class DatosClienteController extends Controller
         $ip = request()->ip();
         $sistema = $this->getOS();
         $navegador = $this->getBrowser();
+
         $datos = $email . "-" . $ip . "-" . $sistema . "-" . $navegador;
+
         return $datos;
     }
 
