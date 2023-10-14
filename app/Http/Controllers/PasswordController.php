@@ -27,7 +27,7 @@ class PasswordController extends Controller
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-            Cache::set($valores['token'], $valores['datos'], 15);
+            Cache::add($valores['token'], $valores['datos'], now()->addMinutes(15));
         }
 
         return back()->withErrors([
@@ -48,7 +48,7 @@ class PasswordController extends Controller
         }
 
         return redirect()->route('gtareas-login')->withErrors([
-            'message' => 'Plazo vencido, solicite de nuevo restablecer la contraseña.',
+            'message' => 'Página no encontrada.',
         ]);
     }
 
@@ -69,11 +69,10 @@ class PasswordController extends Controller
 
         $valores = json_decode($response->body(), true);
 
-        if(Cache::get($datos['token'])){
-            Cache::delete($datos['token']);
-        }
-
         if($response->getStatusCode() == 200){
+			if(Cache::get($datos['token'])){
+				Cache::forget($datos['token']);
+			}
             return redirect()->route('gtareas-login')->withErrors([
                 'message' => $valores['message'],
             ])->onlyInput('email');
