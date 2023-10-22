@@ -1,13 +1,13 @@
-@extends('plantilla')
+@extends('plantilla-login')
 
-@section('gtareas')
+@section('gtareas-login')
 
     <div class="contenedor">
         <div class="formulario">
 
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
 
-            <form action="gtareas-login" method="post">
+            <form action="login" method="post">
 
                 {{ csrf_field() }}
 
@@ -23,11 +23,11 @@
 
             <div class="texto-grupo">
                 <p>¿No tienes cuenta en Gestor de Tareas?
-                    <a href="gtareas-registro" class="registro-link">Registrar</a>
+                    <a href="registro" class="registro-link">Registrar</a>
                 </p>
 
                 <p>¿Olvidastes la contraseña?
-                    <a href="gtareas-restablecer" class="restablecer-link">Restablecer contraseña</a>
+                    <a href="restablecer" class="restablecer-link">Restablecer contraseña</a>
                 </p>
 
                 <div class="error-grupo">

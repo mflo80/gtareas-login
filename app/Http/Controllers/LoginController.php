@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
     public function index(){
         if(auth()->check()) {
-            return redirect()->to('gtareas-inicio');
+            return redirect()->to('inicio');
         }
 
-        return view('gtareas-login');
+        return view('login');
     }
 
     public function login(Request $request)
@@ -35,13 +36,18 @@ class LoginController extends Controller
         if($response->getStatusCode() == 200 && Auth::attempt($credenciales)){
             request()->session()->regenerate();
 
-			$datosCliente = (new DatosClienteController)->datos_token();
+            $user = Auth::user();
 			$token = $valores['token'];
-            Cache::add($datosCliente, $token, now()->addMinutes(60));
+            $userData = [
+                'id' => $user->id,
+                'token' => $token,
+            ];
 
-            return redirect()->route('gtareas-inicio')->withErrors([
+            $cookie = Cookie('token', json_encode($userData), getenv('SESSION_EXPIRATION'));
+
+            return redirect()->route('inicio')->withErrors([
                 'message' => $valores['message'],
-            ]);
+            ])->withCookie($cookie);
         }
 
         if($response->getStatusCode() == 401){
@@ -53,36 +59,34 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $datosCliente = (new DatosClienteController)->datos_token();
+        if(Cookie::has('token')){
+            $userData = Cookie::get('token');
+            $token = json_decode($userData)->token;
 
-        if(Cache::get($datosCliente)){
-            $token = Cache::get($datosCliente);
-        }
+            if(isset($token)){
+                $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
+                ->get(getenv('GTOAUTH_LOGOUT'));
 
-        if(isset($token)){
-            $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-            ->get(env('GTOAUTH_LOGOUT'));
+                $valores = json_decode($response->body(), true);
 
-            $valores = json_decode($response->body(), true);
+                if($response->successful()){
+                    Cache::forget('token');
+                    Cookie::queue(Cookie::forget('token'));
 
-            if(Cache::get($datosCliente)){
-                Cache::forget($datosCliente);
+                    $request->session()->invalidate();
+                    Auth::guard('user')->logout();
+
+                    return redirect()->to('login')->withErrors([
+                        'message' => $valores['message'],
+                    ]);
+                }
             }
         }
 
-        //Auth::logout();
-        $request->session()->invalidate();
+#        $request->session()->invalidate();
 
-        if(!isset($valores['message'])){
-            return redirect()->to('gtareas-login');
-        }
-
-        if($response->getStatusCode() >= 200){
-            return redirect()->to('gtareas-login')->withErrors([
-                'message' => $valores['message'],
-            ]);
-        }
-
-        return redirect()->to('gtareas-login');
+        return back()->withErrors([
+            'message' => 'Error al cerrar sesión.'
+        ]);
     }
 }

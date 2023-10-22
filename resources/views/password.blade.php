@@ -1,11 +1,11 @@
-@extends('plantilla')
+@extends('plantilla-login')
 
-@section('gtareas')
+@section('gtareas-login')
 
     <div class="contenedor">
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-            <form name="contrasena" action="gtareas-password" method="post">
+            <form name="contrasena" action="password" method="post">
                 {{ csrf_field() }}
 
                 <input type="password" id="password" name="password" placeholder="Nueva Contraseña" size="255" min="6" />
@@ -28,7 +28,7 @@
 
                 <div class="login-link">
                     <p>¿Ya tienes cuenta?
-                        <a href="gtareas-login">Iniciar Sesión</a>
+                        <a href="login">Iniciar Sesión</a>
                     </p>
                 </div>
 

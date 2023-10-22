@@ -9,7 +9,7 @@ class RegistroController extends Controller
 {
     public function index()
     {
-        return view('gtareas-registro');
+        return view('registro');
     }
 
     public function registro(Request $request)
@@ -35,7 +35,7 @@ class RegistroController extends Controller
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-            return redirect()->route('gtareas-login')->withErrors([
+            return redirect()->route('login')->withErrors([
                 'message' => $valores['message'],
             ]);
         }

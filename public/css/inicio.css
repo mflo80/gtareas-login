@@ -1,0 +1,156 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  rgb(1, 51, 92);
+    color: #fff;
+    padding: 1rem;
+}
+
+.titulo a {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    margin-left: .5rem;
+    margin-top: .4rem;
+}
+
+.usuario a {
+    font-size: 1.2rem;
+    color: burlywood;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 2rem;
+}
+
+.menu li a {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.menu li a:hover {
+    color: orange;
+}
+
+.toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.sectores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 95%;
+}
+
+.sector {
+    margin: 2rem 1rem 1rem 1rem;
+    width: calc(20% - 1rem);
+    flex: 1;
+    margin-bottom: 1rem;
+    background-color: #ccc;
+}
+
+.sector-1 {
+    background-color: rgb(1, 51, 92);
+}
+
+.sector-2 {
+    background-color:  rgb(1, 51, 92);
+}
+
+.sector-3 {
+    background-color:  rgb(1, 51, 92);
+}
+
+.sector-4 {
+    background-color:  rgb(1, 51, 92);
+}
+
+.sector-5 {
+    background-color:  rgb(1, 51, 92);
+}
+
+.sector-titulo {
+    display: flex;
+    font-size: 2rem;
+    color: rgb(163, 163, 163);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 19, 29);
+    height: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .titulo a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 6rem;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 1rem;
+        z-index: 1;
+    }
+
+    .menu li {
+        margin: 1rem 0;
+    }
+
+    .menu li a {
+        color: bisque;
+    }
+
+    .toggle {
+        display: block;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .sectores {
+        flex-direction: column;
+        height: 200rem;
+    }
+
+    .sector {
+        width: 95%;
+    }
+
+    footer {
+        position: block;
+        width: 100%;
+        bottom: 0;
+    }
+}

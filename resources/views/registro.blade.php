@@ -1,11 +1,11 @@
-@extends('plantilla')
+@extends('plantilla-login')
 
-@section('gtareas')
+@section('gtareas-login')
 
     <div class="contenedor">
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-            <form name="registro" action="gtareas-registro" method="post">
+            <form name="registro" action="registro" method="post">
                 {{ csrf_field() }}
 
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre" size="255" value="{{ old('nombre') }}" autofocus />
@@ -21,7 +21,7 @@
 
                 <div class="btn-grupo">
                     <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
-                        onClick="location.href='gtareas-registro'">Borrar</button>
+                        onClick="location.href='registro'">Borrar</button>
                     <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Registrar</button>
                 </div>
             </form>
@@ -33,7 +33,7 @@
 
                 <div class="login-link">
                     <p>¿Ya tienes cuenta?
-                        <a href="gtareas-login">Iniciar Sesión</a>
+                        <a href="login">Iniciar Sesión</a>
                     </p>
                 </div>
 

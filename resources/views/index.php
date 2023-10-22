@@ -1,3 +1,3 @@
 <?php
-    header("Location: gtareas-login");
+    header("Location: inicio");
 exit();

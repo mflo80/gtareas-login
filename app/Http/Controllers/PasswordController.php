@@ -10,7 +10,7 @@ class PasswordController extends Controller
 {
     public function formRestablecer()
     {
-        return view('gtareas-restablecer');
+        return view('restablecer');
     }
 
     public function sendRestablecer(Request $request)
@@ -37,17 +37,17 @@ class PasswordController extends Controller
 
     public function gotoRestablecer()
     {
-        return redirect()->route('gtareas-restablecer');
+        return redirect()->route('restablecer');
     }
 
     public function formPassword($token)
     {
         if(Cache::get($token)){
             $datos = Cache::get($token);
-            return view('gtareas-password', ['token' => $token])->with('datos', $datos);
+            return view('password', ['token' => $token])->with('datos', $datos);
         }
 
-        return redirect()->route('gtareas-login')->withErrors([
+        return redirect()->route('login')->withErrors([
             'message' => 'Página no encontrada.',
         ]);
     }
@@ -73,7 +73,7 @@ class PasswordController extends Controller
 			if(Cache::get($datos['token'])){
 				Cache::forget($datos['token']);
 			}
-            return redirect()->route('gtareas-login')->withErrors([
+            return redirect()->route('login')->withErrors([
                 'message' => $valores['message'],
             ])->onlyInput('email');
         }
