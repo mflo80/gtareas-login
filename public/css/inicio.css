@@ -41,12 +41,27 @@ nav {
 .menu li a {
     font-size: 1.8rem;
     text-decoration: none;
-    color: white;
     transition: all 0.3s ease;
 }
 
-.menu li a:hover {
+.menu-opcion-1,
+.menu-opcion-2,
+.menu-opcion-3 {
+    color: white;
+}
+
+.menu-opcion-4 {
     color: orange;
+}
+
+.menu-opcion-1:hover,
+.menu-opcion-2:hover,
+.menu-opcion-3:hover {
+    color: gold;
+}
+
+.menu-opcion-4:hover {
+    color: red;
 }
 
 .toggle {

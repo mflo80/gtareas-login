@@ -11,6 +11,7 @@ Route::view('/', "index")->name('index');
 
 Route::controller(InicioController::class)->group(function () {
     Route::get('inicio', 'index')->middleware('auth:sanctum')->name('inicio');
+    Route::get('crear-tarea', 'crear_tarea')->middleware('auth:sanctum')->name('crear-tarea');
 });
 
 Route::controller(LoginController::class)->group(function () {

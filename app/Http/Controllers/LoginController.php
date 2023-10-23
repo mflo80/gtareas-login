@@ -50,7 +50,7 @@ class LoginController extends Controller
             ])->withCookie($cookie);
         }
 
-        if($response->getStatusCode() == 401){
+        if($response->getStatusCode() == 401 || $response->getStatusCode() == 500){
             return back()->withErrors([
                 'message' => $valores['message'],
             ])->onlyInput('email');
@@ -59,34 +59,44 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        if(Cookie::has('token')){
-            $userData = Cookie::get('token');
-            $token = json_decode($userData)->token;
+        try {
+            if(Cookie::has('token')){
+                $userData = Cookie::get('token');
+                $token = json_decode($userData)->token;
 
-            if(isset($token)){
-                $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                ->get(getenv('GTOAUTH_LOGOUT'));
+                if(isset($token)){
+                    $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
+                    ->get(getenv('GTOAUTH_LOGOUT'));
 
-                $valores = json_decode($response->body(), true);
+                    $valores = json_decode($response->body(), true);
 
-                if($response->successful()){
-                    Cache::forget('token');
-                    Cookie::queue(Cookie::forget('token'));
+                    if($response->getStatusCode() == 200 ||
+                        $response->getStatusCode() == 403 ||
+                        $response->getStatusCode() == 404 ||
+                        $response->getStatusCode() == 500){
 
-                    $request->session()->invalidate();
-                    Auth::guard('user')->logout();
-
-                    return redirect()->to('login')->withErrors([
-                        'message' => $valores['message'],
-                    ]);
+                        $message = $valores['message'];
+                    }
                 }
             }
+
+            if(Cookie::has('token') == null){
+                $message = 'Tu sesión ha expirado.';
+            }
+
+            Cache::forget('token');
+            Cookie::queue(Cookie::forget('token'));
+
+            $request->session()->invalidate();
+            Auth::guard('user')->logout();
+
+            return redirect()->to('login')->withErrors([
+                'message' => $message,
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->to('login')->withErrors([
+                'message' => 'Error al cerrar sesión.'
+            ]);
         }
-
-#        $request->session()->invalidate();
-
-        return back()->withErrors([
-            'message' => 'Error al cerrar sesión.'
-        ]);
     }
 }

@@ -1,22 +1,6 @@
 @extends('plantilla-inicio')
 
 @section('gtareas-inicio')
-    <nav>
-        <div class="titulo">
-            <a>Gestor de Tareas</a>
-        </div>
-
-        <ul class="menu">
-            <li><a href="inicio">Inicio</a></li>
-            <li><a href="crear">Crear Tarea</a></li>
-            <li><a href="logout">Cerrar Sesión</a></li>
-            <div class="usuario">
-                <a>({{ auth()->user()->nombre }} {{ auth()->user()->apellido }})</a>
-            </div>
-        </ul>
-        <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
-    </nav>
-
     <div class="sectores">
         <div class="sector sector-1">
             <div>
@@ -48,6 +32,5 @@
     <script>
         window.document.title = 'Gestor de Tareas';
     </script>
-
 @endsection
 
