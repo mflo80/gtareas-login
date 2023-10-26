@@ -72,16 +72,22 @@ nav {
 .sectores {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    height: 95%;
+    justify-content: center;
+    align-items: flex-start;
+    height: 90vh;
+    overflow-y: auto;
+    padding: .5rem;
 }
 
 .sector {
     margin: 2rem 1rem 1rem 1rem;
     width: calc(20% - 1rem);
     flex: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     background-color: #ccc;
+    border: 0.2rem solid black;
+    padding: .5rem;
+    overflow: auto;
 }
 
 .sector-1 {
@@ -112,15 +118,132 @@ nav {
     justify-content: center;
     background-color: rgb(15, 19, 29);
     height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tabla {
+    padding: .2rem;
+    background-color: #333;
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: .5rem;
+    border: .2rem solid #333;
+    background-color: #f2f2f2;
+    table-layout: fixed;
+}
+
+th, td {
+    text-align: left;
+    vertical-align: middle;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #dad3d3;
+}
+
+.tarea-titulo{
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.tarea-texto{
+    text-align: justify;
+    font-size: 1.6rem;
+    word-wrap: break-word;
+}
+
+.tarea-inicia,
+.tarea-finaliza {
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 1.5rem;
+}
+
+.tarea-inicia a,
+.tarea-finaliza a{
+    font-weight: bold;
+}
+
+.tarea-datos{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.tarea-datos a{
+    font-weight: bold;
+}
+
+.tarea-datos a span{
+    font-weight: normal;
+}
+
+.tarea-comentarios span{
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.tarea-usuarios{
+    margin-left: 1rem;
+}
+
+.tarea-usuarios span{
+    margin-left: 0.5rem;
+}
+
+
+.tarea-botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarea-botones button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: 0.25rem 0.5rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    word-wrap: break-word;
+}
+
+.tarea-botones button.ver {
+    background-color: #008CBA;
+}
+
+.tarea-botones button.modificar {
+    background-color: #f44336;
+}
+
+.tarea-botones button.comentar {
+    background-color: #555555;
+}
+
+.tarea-botones button:hover {
+    background-color: #3e8e41;
 }
 
 @media screen and (max-width: 768px) {
-    body {
+    body{
         overflow-y: auto;
     }
 
     .titulo a {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         text-decoration: none;
         color: #fff;
@@ -133,7 +256,8 @@ nav {
         top: 6rem;
         left: 0;
         width: 100%;
-        background-color: #333;
+
+        background-color:  rgb(3, 29, 51);
         padding: 1rem;
         z-index: 1;
     }
@@ -150,17 +274,26 @@ nav {
         display: block;
     }
 
+    .toggle img{
+        width: 3rem;
+        height: 3rem;
+    }
+
     .menu.active {
         display: flex;
     }
 
     .sectores {
         flex-direction: column;
-        height: 200rem;
+         height: auto;
     }
 
     .sector {
         width: 95%;
+    }
+
+    .tarea-texto {
+        font-size: 1.2rem;
     }
 
     footer {
@@ -169,3 +302,4 @@ nav {
         bottom: 0;
     }
 }
+

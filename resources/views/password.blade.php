@@ -6,7 +6,7 @@
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
             <form name="contrasena" action="password" method="post">
-                {{ csrf_field() }}
+                @csrf
 
                 <input type="password" id="password" name="password" placeholder="Nueva Contraseña" size="255" min="6" />
 

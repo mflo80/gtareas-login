@@ -6,7 +6,7 @@
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
             <form name="registro" action="registro" method="post">
-                {{ csrf_field() }}
+                @csrf
 
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre" size="255" value="{{ old('nombre') }}" autofocus />
 

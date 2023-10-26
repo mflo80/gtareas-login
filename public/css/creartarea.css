@@ -1,4 +1,156 @@
-h2{
+.formulario{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    border: .3rem solid black;
+    background-color: rgb(1, 51, 92);
+}
+
+.formulario-titulo-crear{
     text-align: center;
+    margin-top: .5rem;
     color: white;
+    font-size: 3rem;
+    text-shadow: .2rem .2rem .4rem rgba(0, 0, 0, 0.5);
+}
+
+#titulo,
+textarea {
+    width: 90%;
+    margin-left: 2.2rem;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+    border: none;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#titulo {
+    height: 4rem;
+    background-color: white;
+    color: black;
+}
+
+textarea {
+    height: 14rem;
+    resize: none;
+}
+
+.fecha{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.fecha label{
+    width: 18rem;
+    font-size: 1.6rem;
+    color: white;
+    margin-left: 2.2rem;
+}
+
+.fecha input{
+    width: 80%;
+    height: 3.5rem;
+    margin-left: .5rem;
+    margin-right: 1.8rem;
+    border: none;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.categoria{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2.2rem;
+    margin-right: 1.8rem;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    color: white;
+}
+
+.categoria select{
+    width: 80%;
+    height: 4rem;
+    margin-left: 2rem;
+    border: none;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.usuarios-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.buscar-usuario-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+
+.buscar-usuario-container input[type="text"] {
+    padding-right: 3rem;
+    width: 65%;
+}
+
+.buscar-usuario-container button {
+    border: none;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    word-wrap: break-word;
+    background: none;
+}
+
+.buscar-usuario-container img {
+    vertical-align: middle;
+    width: 100%;
+    height: 80%;
+    margin-bottom: .8rem;
+}
+
+.buscar-usuario-container img:hover {
+    opacity: 0.8;
+}
+
+.btn-grupo{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.texto-grupo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2.2rem;
+    margin-right: 1.8rem;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    color: white;
+}
+
+.crear-tarea-page{
+    overflow-y: hidden;
 }

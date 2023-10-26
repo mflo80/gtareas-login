@@ -8,8 +8,7 @@
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
 
             <form action="login" method="post">
-
-                {{ csrf_field() }}
+                @csrf
 
                 <input id="email" type="email" name="email" placeholder="Correo Electrónico" size="255" autocomplete="email"
                     value="{{ old('email') }}" autofocus />

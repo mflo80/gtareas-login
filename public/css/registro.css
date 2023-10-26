@@ -10,13 +10,6 @@
     color: yellow;
 }
 
-@media only screen and (max-height: 1000px){
-
-}
-
-@media only screen and (max-height: 900px){
-
-}
 
 @media only screen and (max-height: 800px){
     .formulario {

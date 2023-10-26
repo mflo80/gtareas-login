@@ -6,7 +6,7 @@
         <div class="formulario">
             <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
             <form name="restablecer" action="restablecer" method="post">
-                {{ csrf_field() }}
+                @csrf
 
                 <input type="email" name="email" placeholder="Correo Electrónico" size="60" value="{{ old('email') }}" />
                 <input type="hidden" name="token" value="{{ csrf_token() }}" />
