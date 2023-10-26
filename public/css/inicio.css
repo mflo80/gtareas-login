@@ -161,7 +161,7 @@ th {
 
 .tarea-inicia,
 .tarea-finaliza {
-    text-align: left;
+    text-align: center;
     word-wrap: break-word;
     font-size: 1.5rem;
 }
