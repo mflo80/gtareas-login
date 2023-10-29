@@ -2,15 +2,18 @@
     @extends('plantilla-inicio')
 
     @section('gtareas-inicio')
+        <div class="contenedor-crear">
+            <div class="columna">
+                <div class="titulo-crear">
+                    <legend>Crear Tarea</legend>
+                </div>
 
-        <div class="contenedor">
-            <div class="formulario">
                 <form id="crear-tarea" action="crear-tarea" method="post">
                     @csrf
 
-                    <h2 class="formulario-titulo-crear">Crear tarea</h2>
-
-                    <input type="text" id="titulo" name="titulo" placeholder="Título" size="255" value="{{ old('titulo') }}" autofocus />
+                    <div class="titulo-input">
+                        <input type="text" id="titulo" name="titulo" placeholder="Título" size="255" value="{{ old('titulo') }}" autofocus />
+                    </div>
 
                     <textarea id="texto" name="texto" placeholder="Ingrese aquí el texto de la tarea..." value="{{ old('texto') }}"></textarea>
 
@@ -35,29 +38,32 @@
                         </select>
                     </div>
 
-                    <div class="usuarios-container">
-                        <div class="buscar-usuario-container">
-                            <input type="text" id="buscar-usuario" name="buscar_usuario" placeholder="Buscar usuario" size="255" />
-                            <button type="button" class="usuario"><img class="buscar-usuario-img" src="{{ asset('/img/buscar-usuario.png') }}" alt="Buscar Usuario"></button>
-                            <button type="button" class="usuario"><img class="agregar-usuario-img" src="{{ asset('/img/agregar-usuario.png') }}" alt="Agregar Usuario"></button>
-                        </div>
-                        <div class="usuarios-agregados">
-                            <input type="text" id="usuarios" name="usuarios" placeholder="Usuarios agregados" size="1024" />
-                        </div>
-                        <div id="resultado-busqueda"></div>
-                    </div>
-
                     <div class="btn-grupo">
                         <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
                             onClick="location.href='crear-tarea'">Borrar</button>
                         <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Crear</button>
                     </div>
                 </form>
-            </div> <!-- Fin Formulario -->
-        </div> <!-- Fin Contenedor -->
+            </div>
+
+            <div class="columna">
+                <div class="usuarios-container">
+                    <div class="buscar-usuario-container">
+                        <input type="text" id="buscar-usuario" name="buscar_usuario" placeholder="Buscar usuario" size="255" />
+                        <button type="button" class="usuario"><img class="buscar-usuario-img" src="{{ asset('/img/buscar-usuario.png') }}" alt="Buscar Usuario"></button>
+                        <button type="button" class="usuario"><img class="agregar-usuario-img" src="{{ asset('/img/agregar-usuario.png') }}" alt="Agregar Usuario"></button>
+                    </div>
+                    <div class="usuarios-agregados">
+                        <textarea type="text" id="usuarios" name="usuarios" placeholder="Usuarios agregados" size="1024"></textarea>
+                    </div>
+                    <div id="resultado-busqueda"></div>
+                </div>
+            </div>
+        </div>
 
         <script>window.document.title = 'Gestor de Tareas - Crear Tarea';</script>
         <script src="{{ asset('js/creartarea.js') }}"></script>
+
     @endsection
 </body>
 

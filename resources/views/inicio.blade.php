@@ -7,7 +7,7 @@
             <div>
                 <a class="sector-titulo">Identificación</a>
             </div>
-            @for ($i = 1; $i <= 8; $i++)
+            @for ($i = 1; $i <= 5; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
                     <thead>
                         <tr>
@@ -57,7 +57,7 @@
             <div>
                 <a class="sector-titulo">Planificación</a>
             </div>
-            @for ($i = 9; $i <= 10; $i++)
+            @for ($i = 6; $i <= 7; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
                     <thead>
                         <tr>
@@ -107,7 +107,7 @@
             <div>
                 <a class="sector-titulo">Ejecución</a>
             </div>
-            @for ($i = 11; $i <= 14; $i++)
+            @for ($i = 8; $i <= 8; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
                     <thead>
                         <tr>
@@ -157,7 +157,7 @@
             <div>
                 <a class="sector-titulo">Control</a>
             </div>
-            @for ($i = 15; $i <= 16; $i++)
+            @for ($i = 9; $i <= 10; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
                     <thead>
                         <tr>
@@ -207,7 +207,7 @@
             <div>
                 <a class="sector-titulo">Finalización</a>
             </div>
-            @for ($i = 17; $i <= 20; $i++)
+            @for ($i = 11; $i <= 11; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
                     <thead>
                         <tr>

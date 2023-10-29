@@ -22,12 +22,12 @@ class PasswordController extends Controller
         ]);
 
         $response = Http::withHeaders([ "Accept" => "application/json"])
-            -> get(getenv("GTOAUTH_PASSWORD"), $credenciales);
+            -> post(getenv("GTOAUTH_PASSWORD"), $credenciales);
 
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-            Cache::add($valores['token'], $valores['datos'], now()->addMinutes(15));
+            Cache::add($valores['datos']['token'], $valores['datos'], now()->addMinutes(15));
         }
 
         return back()->withErrors([

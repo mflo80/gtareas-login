@@ -15,7 +15,7 @@
 
                 <input type="hidden" name="token" value="{{ $token }}" />
 
-                <input type="hidden" name="email" value="{{ $datos['email'] }}" />
+                <input type="hidden" name="email" value="{{ $datos['to'] }}" />
 
                 <div class="btn-grupo">
                     <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Aceptar</button>
