@@ -12,8 +12,9 @@
 </head>
 
 <body>
-
-    @yield('gtareas-login')
+    <main>
+        @yield('gtareas-auth')
+    </main>
 
     <footer>
         <div class="footer-texto">
@@ -23,7 +24,6 @@
 
     <script src="{{ asset('js/jQuery.js') }}"></script>
     <script src="{{ asset('js/plantilla.js') }}"></script>
-
 </body>
 
 </html>

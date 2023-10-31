@@ -8,11 +8,11 @@ class InicioController extends Controller
 {
     public function index()
     {
-        return view('inicio');
+        return view('tareas.inicio');
     }
 
     public function crear_tarea()
     {
-        return view('crear-tarea');
+        return view('tareas.crear');
     }
 }

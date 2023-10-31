@@ -1,15 +1,29 @@
+
 // Obtener el campo de fecha y hora
 var campoFechaHoraInicio = document.getElementById("fecha-inicio");
 var campoFechaHoraFin = document.getElementById("fecha-fin");
 
-// Obtener la fecha y hora actual del sistema
-var fechaHoraActual = new Date();
-fechaHoraActual.setHours(fechaHoraActual.getHours() - 3);
-var fechaHoraMenos3Horas = fechaHoraActual.toISOString().slice(0, 16);
+// Obtener la fecha y hora actual
+function getCurrentDateTime() {
+    var fechaHoraActual = new Date();
+    fechaHoraActual.setHours(fechaHoraActual.getHours() - 3);
+    return fechaHoraActual.toISOString().slice(0, 16);
+}
 
-// Establecer el valor del campo de fecha y hora
-campoFechaHoraInicio.value = fechaHoraMenos3Horas;
-campoFechaHoraFin.value = fechaHoraMenos3Horas;
+// Inicializar el campo de fecha y hora
+campoFechaHoraInicio.value = getCurrentDateTime();
+campoFechaHoraFin.value = getCurrentDateTime();
+
+// Funcion para manejar el evento input
+function handleInput(e) {
+    if (!e.target.value) {
+        e.target.value = getCurrentDateTime();
+    }
+}
+
+// Listener para el evento input
+campoFechaHoraInicio.addEventListener('input', handleInput);
+campoFechaHoraFin.addEventListener('input', handleInput);
 
 // Actualizar el mínimo valor de la fecha y hora de fin
 campoFechaHoraInicio.addEventListener('input', () => {
@@ -49,7 +63,3 @@ textarea.addEventListener('input', () => {
         textarea.value = text.slice(0, maxLengthTextArea);
     }
 });
-
-
-
-

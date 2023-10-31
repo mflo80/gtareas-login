@@ -10,7 +10,7 @@ class PasswordController extends Controller
 {
     public function form_restablecer()
     {
-        return view('restablecer');
+        return view('auth.restablecer');
     }
 
     public function send_restablecer(Request $request)
@@ -37,17 +37,17 @@ class PasswordController extends Controller
 
     public function goto_restablecer()
     {
-        return redirect()->route('restablecer');
+        return redirect()->route('auth.restablecer');
     }
 
     public function form_password($token)
     {
         if(Cache::get($token)){
             $datos = Cache::get($token);
-            return view('password', ['token' => $token])->with('datos', $datos);
+            return view('auth.password', ['token' => $token])->with('datos', $datos);
         }
 
-        return redirect()->route('login')->withErrors([
+        return redirect()->route('auth.login')->withErrors([
             'message' => 'Página no encontrada.',
         ]);
     }
@@ -73,7 +73,7 @@ class PasswordController extends Controller
 			if(Cache::get($datos['token'])){
 				Cache::forget($datos['token']);
 			}
-            return redirect()->route('login')->withErrors([
+            return redirect()->route('auth.login')->withErrors([
                 'message' => $valores['message'],
             ])->onlyInput('email');
         }

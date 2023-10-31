@@ -20,7 +20,7 @@ body {
 	background: linear-gradient(40deg, rgb(1, 100, 182), rgb(2, 86, 155));
 }
 
-.contenedor{
+main{
 	position: relative;
 	height: 100%;
 }
@@ -263,5 +263,20 @@ footer{
 
 .footer-texto p{
 	font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav, .contenido, footer {
+        flex: 1;
+    }
+
+    footer{
+        clear: both;
+    }
 }
 

@@ -1,9 +1,9 @@
 <body class="crear-tarea-page">
-    @extends('plantilla-inicio')
+    @extends('tareas.plantilla')
 
     @section('gtareas-inicio')
         <div class="contenedor-crear">
-            <div class="columna">
+            <div class="formulario-crear">
                 <div class="titulo-crear">
                     <legend>Crear Tarea</legend>
                 </div>
@@ -44,26 +44,11 @@
                         <button type="submit" class="btn btn-primary btn-block btn-large btn-registrar">Crear</button>
                     </div>
                 </form>
-            </div>
-
-            <div class="columna">
-                <div class="usuarios-container">
-                    <div class="buscar-usuario-container">
-                        <input type="text" id="buscar-usuario" name="buscar_usuario" placeholder="Buscar usuario" size="255" />
-                        <button type="button" class="usuario"><img class="buscar-usuario-img" src="{{ asset('/img/buscar-usuario.png') }}" alt="Buscar Usuario"></button>
-                        <button type="button" class="usuario"><img class="agregar-usuario-img" src="{{ asset('/img/agregar-usuario.png') }}" alt="Agregar Usuario"></button>
-                    </div>
-                    <div class="usuarios-agregados">
-                        <textarea type="text" id="usuarios" name="usuarios" placeholder="Usuarios agregados" size="1024"></textarea>
-                    </div>
-                    <div id="resultado-busqueda"></div>
-                </div>
-            </div>
-        </div>
+            </div> <!-- Fin Clase Formulario Crear -->
+        </div> <!-- Fin Clase Contenedor Crear -->
 
         <script>window.document.title = 'Gestor de Tareas - Crear Tarea';</script>
         <script src="{{ asset('js/creartarea.js') }}"></script>
-
     @endsection
 </body>
 

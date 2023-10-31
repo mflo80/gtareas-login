@@ -1,6 +1,7 @@
-@extends('plantilla-inicio')
+@extends('tareas.plantilla')
 
 @section('gtareas-inicio')
+
 <div class="sectores">
     <div class="sector sector-1">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">

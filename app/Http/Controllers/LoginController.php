@@ -15,7 +15,7 @@ class LoginController extends Controller
             return redirect()->to('inicio');
         }
 
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(Request $request)
@@ -45,7 +45,7 @@ class LoginController extends Controller
 
             $cookie = Cookie('token', json_encode($userData), getenv('SESSION_EXPIRATION'));
 
-            return redirect()->route('inicio')->withErrors([
+            return redirect()->route('tareas.inicio')->withErrors([
                 'message' => $valores['message'],
             ])->withCookie($cookie);
         }

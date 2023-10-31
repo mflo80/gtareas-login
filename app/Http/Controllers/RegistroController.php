@@ -9,7 +9,7 @@ class RegistroController extends Controller
 {
     public function index()
     {
-        return view('registro');
+        return view('auth.registro');
     }
 
     public function registro(Request $request)
@@ -35,7 +35,7 @@ class RegistroController extends Controller
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-            return redirect()->route('login')->withErrors([
+            return redirect()->route('auth.login')->withErrors([
                 'message' => $valores['message'],
             ]);
         }

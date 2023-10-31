@@ -7,12 +7,16 @@ nav {
     padding: 1rem;
 }
 
+/* TITULO PRINCIPAL */
+
 .titulo a {
     font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
 }
+
+/* NOMBRE DE USUARIO */
 
 .usuario {
     display: flex;
@@ -26,6 +30,8 @@ nav {
     color: burlywood;
     text-decoration: none;
 }
+
+/* MENU PRINCIPAL */
 
 .menu {
     display: flex;
@@ -46,21 +52,23 @@ nav {
 
 .menu-opcion-1,
 .menu-opcion-2,
-.menu-opcion-3 {
+.menu-opcion-3,
+.menu-opcion-4 {
     color: white;
 }
 
-.menu-opcion-4 {
+.menu-opcion-5 {
     color: orange;
 }
 
 .menu-opcion-1:hover,
 .menu-opcion-2:hover,
-.menu-opcion-3:hover {
+.menu-opcion-3:hover,
+.menu-opcion-4:hover {
     color: gold;
 }
 
-.menu-opcion-4:hover {
+.menu-opcion-5:hover {
     color: red;
 }
 
@@ -68,6 +76,39 @@ nav {
     display: none;
     cursor: pointer;
 }
+
+/* SUB MENU HISTORIAL */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:  rgb(3, 29, 51);
+    min-width: 16rem;
+    box-shadow: 0rem .8rem 1.6rem 0rem rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 1.2rem 1.6rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: gold;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* MUESTRA LAS 5 ETAPAS DE LAS TAREAS */
 
 .sectores {
     display: flex;
@@ -120,6 +161,8 @@ nav {
     height: 3rem;
     margin-bottom: .5rem;
 }
+
+/* MUESTRA LAS TAREAS DENTRO DE CADA SECTOR */
 
 .tabla {
     padding: .2rem;
@@ -197,7 +240,6 @@ th {
     margin-left: 0.5rem;
 }
 
-
 .tarea-botones {
     display: flex;
     justify-content: center;
@@ -250,21 +292,25 @@ th {
         color: #fff;
     }
 
+    .usuario {
+        justify-content: flex-end;
+    }
+
     .menu {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 6rem;
-        left: 0;
+        right: 0;
         width: 100%;
-
-        background-color:  rgb(3, 29, 51);
+        background-color:  rgb(1, 51, 92);
         padding: 1rem;
         z-index: 1;
     }
 
     .menu li {
         margin: 1rem 0;
+        text-align: right;
     }
 
     .menu li a {
@@ -284,9 +330,15 @@ th {
         display: flex;
     }
 
+    .dropdown-content {
+        right: 0;
+        background-color:  rgb(5, 44, 78);
+    }
+
     .sectores {
         flex-direction: column;
-         height: auto;
+        width: auto;
+        height: auto;
     }
 
     .sector {
@@ -295,12 +347,6 @@ th {
 
     .tarea-texto {
         font-size: 1.2rem;
-    }
-
-    footer {
-        position: block;
-        width: 100%;
-        bottom: 0;
     }
 }
 
