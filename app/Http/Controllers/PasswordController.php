@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Http;
 
 class PasswordController extends Controller
 {
-    public function formRestablecer()
+    public function form_restablecer()
     {
         return view('restablecer');
     }
 
-    public function sendRestablecer(Request $request)
+    public function send_restablecer(Request $request)
     {
         $credenciales = $request->validate([
             'email' => ['required', 'email', 'string']
@@ -35,12 +35,12 @@ class PasswordController extends Controller
         ])->onlyInput('email');
     }
 
-    public function gotoRestablecer()
+    public function goto_restablecer()
     {
         return redirect()->route('restablecer');
     }
 
-    public function formPassword($token)
+    public function form_password($token)
     {
         if(Cache::get($token)){
             $datos = Cache::get($token);
@@ -52,7 +52,7 @@ class PasswordController extends Controller
         ]);
     }
 
-    public function cambiarPassword(Request $request)
+    public function cambiar_password(Request $request)
     {
         $datos = $request->validate([
             'token' => 'required',

@@ -26,9 +26,9 @@ Route::controller(RegistroController::class)->group(function () {
 });
 
 Route::controller(PasswordController::class)->group(function () {
-    Route::get('restablecer', 'formRestablecer')->name('restablecer');
-    Route::post('restablecer', 'sendRestablecer');
-    Route::get('password', 'gotoRestablecer');
-    Route::get('password-{token}', 'formPassword')->name('password');
-    Route::post('password', 'cambiarPassword');
+    Route::get('restablecer', 'form_restablecer')->name('restablecer');
+    Route::post('restablecer', 'send_restablecer');
+    Route::get('password', 'goto_restablecer');
+    Route::get('password-{token}', 'form_password')->name('password');
+    Route::post('password', 'cambiar_password');
 });
