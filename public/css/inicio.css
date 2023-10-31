@@ -82,6 +82,8 @@ nav {
 .dropdown {
     position: relative;
     display: inline-block;
+    align-items: center;
+    margin-top: .2rem;
 }
 
 .dropdown-content {

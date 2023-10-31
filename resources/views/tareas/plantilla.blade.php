@@ -23,8 +23,8 @@
             <li class="dropdown">
                 <a href="#" class="menu-opcion-4 dropbtn">Historial</a>
                 <div class="dropdown-content">
-                    <a href="historial-tarea">Historial Tareas</a>
-                    <a href="historial-comentarios">Historial Comentarios</a>
+                    <a href="historial-tarea">... Tareas</a>
+                    <a href="historial-comentarios">... Comentarios</a>
                 </div>
             </li>
             <li><a href="logout" class="menu-opcion-5">Cerrar Sesión</a></li>
