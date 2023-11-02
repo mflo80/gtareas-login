@@ -10,14 +10,14 @@ use App\Http\Controllers\PasswordController;
 Route::view('/', "index")->name('index');
 
 Route::controller(InicioController::class)->group(function () {
-    Route::get('inicio', 'index')->middleware('auth:sanctum')->name('tareas.inicio');
-    Route::get('crear-tarea', 'crear_tarea')->middleware('auth:sanctum')->name('tareas.crear');
+    Route::get('inicio', 'index')->middleware('auth')->name('tareas.inicio');
+    Route::get('crear-tarea', 'crear_tarea')->middleware('auth')->name('tareas.crear');
 });
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'index')->name('auth.login');
     Route::post('login', 'login');
-    Route::get('logout', 'logout')->middleware('auth:sanctum')->name('auth.logout');
+    Route::get('logout', 'logout')->middleware('auth')->name('auth.logout');
 });
 
 Route::controller(RegistroController::class)->group(function () {

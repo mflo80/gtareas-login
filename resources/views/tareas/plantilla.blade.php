@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Tareas</title>
-    <link href="{{ asset('/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/inicio.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/creartarea.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/tareas/inicio.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/tareas/crear.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -46,8 +46,8 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="{{ asset('js/inicio.js') }}"></script>
+    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
+    <script src="{{ asset('js/tareas/inicio.js') }}"></script>
 </body>
 
 </html>

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('/css/general.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/restablecer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth/registro.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth/restablecer.css') }}" rel="stylesheet">
     <title>Gestor de Tareas</title>
 </head>
 
@@ -22,8 +23,8 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/jQuery.js') }}"></script>
-    <script src="{{ asset('js/plantilla.js') }}"></script>
+    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
+    <script src="{{ asset('js/auth/plantilla.js') }}"></script>
 </body>
 
 </html>
