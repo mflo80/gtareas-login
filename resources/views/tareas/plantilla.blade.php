@@ -14,6 +14,7 @@
     <nav>
         <div class="titulo">
             <a>Gestor de Tareas</a>
+            <img class="imagen-tareas" src="{{ asset('/img/lista-de-tareas.png') }}" alt="Imagen de una lista con tareas" />
         </div>
 
         <ul class="menu">

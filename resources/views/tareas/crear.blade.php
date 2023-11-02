@@ -19,22 +19,33 @@
 
             <div class="fecha">
                 <label for="fecha-inicio">Fecha de inicio:</label>
-                <input type="datetime-local" id="fecha-inicio" name="fecha_inicio" value="{{ old('fecha_inicio') }}">
+                <input type="datetime-local" id="fecha-inicio" name="fecha_hora_inicio" value="{{ old('fecha_hora_inicio') }}">
             </div>
 
             <div class="fecha">
                 <label for="fecha-fin">Fecha de fin:</label>
-                <input type="datetime-local" id="fecha-fin" name="fecha_fin" value="{{ old('fecha_fin') }}">
+                <input type="datetime-local" id="fecha-fin" name="fecha_hora_fin" value="{{ old('fecha_hora_fin') }}">
             </div>
 
             <div class="categoria">
                 <label for="categoria">Categoría:</label>
                 <select id="categoria" name="categoria">
-                    <option value="1">Identificación</option>
-                    <option value="2">Planificación</option>
-                    <option value="3">Ejecución</option>
-                    <option value="4">Control</option>
-                    <option value="5">Finalización</option>
+                    <option value="Análisis">Análisis</option>
+                    <option value="Diseño">Diseño</option>
+                    <option value="Implementación">Implementación</option>
+                    <option value="Verificación">Verificación</option>
+                    <option value="Mantenimiento">Mantenimiento</option>
+                </select>
+            </div>
+
+            <div class="categoria">
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado">
+                    <option value="Activa">Activa</option>
+                    <option value="Atrasada">Atrasada</option>
+                    <option value="Cancelada">Cancelada</option>
+                    <option value="En espera">En espera</option>
+                    <option value="Finalizada">Finalizada</option>
                 </select>
             </div>
 
@@ -45,6 +56,15 @@
             </div>
         </form>
     </div> <!-- Fin Clase Formulario Crear -->
+
+    <div class="error-grupo">
+        <div class="error-mensaje">
+            @foreach ($errors->all() as $message)
+                <p id="error">{{ $message }}</p>
+            @break
+        @endforeach
+    </div>
+
 </div> <!-- Fin Clase Contenedor Crear -->
 
 <script>window.document.title = 'Gestor de Tareas - Crear Tarea';</script>

@@ -10,9 +10,4 @@ class InicioController extends Controller
     {
         return view('tareas.inicio');
     }
-
-    public function crear_tarea()
-    {
-        return view('tareas.crear');
-    }
 }

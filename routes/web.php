@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TareaController;
 use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -9,9 +10,13 @@ use App\Http\Controllers\PasswordController;
 
 Route::view('/', "index")->name('index');
 
-Route::controller(InicioController::class)->group(function () {
-    Route::get('inicio', 'index')->middleware('auth')->name('tareas.inicio');
-    Route::get('crear-tarea', 'crear_tarea')->middleware('auth')->name('tareas.crear');
+Route::controller(InicioController::class)->middleware('auth')->group(function () {
+    Route::get('inicio', 'index')->name('tareas.inicio');
+});
+
+Route::controller(TareaController::class)->middleware('auth')->group(function () {
+    Route::get('crear-tarea', 'index')->name('tareas.crear');
+    Route::post('crear-tarea', 'guardar');
 });
 
 Route::controller(LoginController::class)->group(function () {
@@ -20,12 +25,12 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('logout', 'logout')->middleware('auth')->name('auth.logout');
 });
 
-Route::controller(RegistroController::class)->group(function () {
+Route::controller(RegistroController::class)->middleware('guest')->group(function () {
     Route::get('registro', 'index')->name('auth.registro');
     Route::post('registro', 'registro');
 });
 
-Route::controller(PasswordController::class)->group(function () {
+Route::controller(PasswordController::class)->middleware('guest')->group(function () {
     Route::get('restablecer', 'form_restablecer')->name('auth.restablecer');
     Route::post('restablecer', 'send_restablecer');
     Route::get('password', 'goto_restablecer');

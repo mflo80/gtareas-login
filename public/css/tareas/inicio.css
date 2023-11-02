@@ -1,3 +1,8 @@
+:root {
+    --font-weight-bold: bold;
+    --margin-left-half-rem: 0.5rem;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -19,6 +24,12 @@ nav {
     font-weight: bold;
     text-decoration: none;
     color: #fff;
+}
+
+.imagen-tareas{
+    width: 3rem;
+    height: 3rem;
+    margin-left: .6rem;
 }
 
 /* NOMBRE DE USUARIO */
@@ -217,34 +228,36 @@ th {
 }
 
 .tarea-inicia a,
-.tarea-finaliza a{
-    font-weight: bold;
+.tarea-finaliza a,
+.tarea-datos a {
+    font-weight: var(--font-weight-bold);
 }
 
-.tarea-datos{
-    text-align: center;
+.tarea-datos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
 }
 
-.tarea-datos a{
-    font-weight: bold;
-}
-
-.tarea-datos a span{
+.tarea-datos a span {
     font-weight: normal;
 }
 
-.tarea-comentarios span{
-    margin-left: 0.5rem;
-    margin-right: 1rem;
+.tarea-comentarios span,
+.tarea-usuarios span {
+    margin-left: var(--margin-left-half-rem);
 }
 
-.tarea-usuarios{
-    margin-left: 1rem;
+.tarea-usuarios {
+    margin-left: 2rem;
 }
 
-.tarea-usuarios span{
-    margin-left: 0.5rem;
+.icono-comentario,
+.icono-usuario {
+    width: 2rem;
+    height: 1.6rem;
+    transform: translateY(.2rem);
 }
 
 .tarea-botones {

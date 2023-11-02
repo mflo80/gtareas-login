@@ -6,7 +6,7 @@
     <div class="sector sector-1">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div>
-                <a class="sector-titulo">Identificación</a>
+                <a class="sector-titulo">Análisis</a>
             </div>
             @for ($i = 1; $i <= 5; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
@@ -37,8 +37,14 @@
                         </tr>
                         <tr>
                             <td class="tarea-datos">
-                                <a class="tarea-comentarios">Comentarios:<span>{{ rand(1, 20) }}</span></a>
-                                <a class="tarea-usuarios">Usuarios:<span>{{ rand(1, 10) }}</span></a>
+                                <div class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </div>
+                                <div class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -56,7 +62,7 @@
     <div class="sector sector-2">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div>
-                <a class="sector-titulo">Planificación</a>
+                <a class="sector-titulo">Diseño</a>
             </div>
             @for ($i = 6; $i <= 7; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
@@ -87,8 +93,14 @@
                         </tr>
                         <tr>
                             <td class="tarea-datos">
-                                <a class="tarea-comentarios">Comentarios:<span>{{ rand(1, 20) }}</span></a>
-                                <a class="tarea-usuarios">Usuarios:<span>{{ rand(1, 10) }}</span></a>
+                                <div class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </div>
+                                <div class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +118,7 @@
     <div class="sector sector-3">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div>
-                <a class="sector-titulo">Ejecución</a>
+                <a class="sector-titulo">Implementación</a>
             </div>
             @for ($i = 8; $i <= 8; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
@@ -137,8 +149,14 @@
                         </tr>
                         <tr>
                             <td class="tarea-datos">
-                                <a class="tarea-comentarios">Comentarios:<span>{{ rand(1, 20) }}</span></a>
-                                <a class="tarea-usuarios">Usuarios:<span>{{ rand(1, 10) }}</span></a>
+                                <div class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </div>
+                                <div class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -156,7 +174,7 @@
     <div class="sector sector-4">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div>
-                <a class="sector-titulo">Control</a>
+                <a class="sector-titulo">Verificación</a>
             </div>
             @for ($i = 9; $i <= 10; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
@@ -187,8 +205,14 @@
                         </tr>
                         <tr>
                             <td class="tarea-datos">
-                                <a class="tarea-comentarios">Comentarios:<span>{{ rand(1, 20) }}</span></a>
-                                <a class="tarea-usuarios">Usuarios:<span>{{ rand(1, 10) }}</span></a>
+                                <div class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </div>
+                                <div class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -206,7 +230,7 @@
     <div class="sector sector-5">
         <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div>
-                <a class="sector-titulo">Finalización</a>
+                <a class="sector-titulo">Mantenimiento</a>
             </div>
             @for ($i = 11; $i <= 11; $i++)
                 <table draggable="true" ondragstart="drag(event)" id="table-{{ $i }}">
@@ -237,8 +261,14 @@
                         </tr>
                         <tr>
                             <td class="tarea-datos">
-                                <a class="tarea-comentarios">Comentarios:<span>{{ rand(1, 20) }}</span></a>
-                                <a class="tarea-usuarios">Usuarios:<span>{{ rand(1, 10) }}</span></a>
+                                <div class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </div>
+                                <div class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </div>
                             </td>
                         </tr>
                         <tr>
