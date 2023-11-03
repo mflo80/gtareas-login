@@ -41,7 +41,7 @@ class TareaController extends Controller
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-            return redirect()->route('tareas.inicio')->withErrors([
+            return redirect()->route('tareas.crear')->withErrors([
                 'message' => $valores['message'],
             ]);
         }

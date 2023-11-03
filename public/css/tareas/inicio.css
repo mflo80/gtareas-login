@@ -215,7 +215,7 @@ th {
 }
 
 .tarea-texto{
-    text-align: justify;
+    text-align: center;
     font-size: 1.6rem;
     word-wrap: break-word;
 }
