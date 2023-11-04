@@ -40,4 +40,24 @@ class InicioController extends Controller
         $token = json_decode($userData)->token;
         return $token;
     }
+
+    public function ayuda()
+    {
+        return view('tareas.ayuda');
+    }
+
+    public function buscar()
+    {
+        return view('tareas.buscar');
+    }
+
+    public function historial_comentarios()
+    {
+        return view('historial.comentarios');
+    }
+
+    public function historial_tareas()
+    {
+        return view('historial.tareas');
+    }
 }

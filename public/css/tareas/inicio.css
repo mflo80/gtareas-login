@@ -69,22 +69,24 @@ nav {
 .menu-opcion-1,
 .menu-opcion-2,
 .menu-opcion-3,
-.menu-opcion-4 {
+.menu-opcion-4,
+.menu-opcion-5 {
     color: white;
 }
 
-.menu-opcion-5 {
+.menu-opcion-6 {
     color: orange;
 }
 
 .menu-opcion-1:hover,
 .menu-opcion-2:hover,
 .menu-opcion-3:hover,
-.menu-opcion-4:hover {
+.menu-opcion-4:hover,
+.menu-opcion-5:hover {
     color: gold;
 }
 
-.menu-opcion-5:hover {
+.menu-opcion-6:hover {
     color: red;
 }
 

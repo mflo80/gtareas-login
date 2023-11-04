@@ -154,10 +154,13 @@ input[type="datetime"]::-webkit-clear-button {
 }
 
 @media (max-width: 768px) {
+    .contenedor-crear {
+        top: 42%;
+    }
+
     .formulario-crear {
-        width: 96%;
-        height: auto;
-        margin: -5% 2% 0 2%;
+        width: 84%;
+        margin: 0% 8% 0 8%;
     }
 
     .titulo-crear {
