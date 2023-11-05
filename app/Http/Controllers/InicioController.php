@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
@@ -9,9 +10,8 @@ class InicioController extends Controller
 {
     public function index()
     {
-        $userData = $this->getActiveUserToken();
-        $token = json_decode($userData)->token;
-        $usuario = json_decode($userData)->usuario;
+        $token = session('gtoken');
+        $usuario = $this->getActiveUserToken();
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
@@ -37,39 +37,36 @@ class InicioController extends Controller
 
     public function ayuda()
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         return view('tareas.ayuda', ['usuario' => $usuario]);
     }
 
     public function buscar()
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         return view('tareas.buscar', ['usuario' => $usuario]);
     }
 
     public function historial_comentarios()
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         return view('historial.comentarios', ['usuario' => $usuario]);
     }
 
     public function historial_tareas()
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         return view('historial.tareas', ['usuario' => $usuario]);
     }
 
     public function getActiveUserToken()
     {
-        $userData = Cookie::get('gtoken');
+        $token = session('gtoken');
+        $userData = Cache::get($token);
         return $userData;
     }
 }

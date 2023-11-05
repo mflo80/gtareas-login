@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -36,18 +37,18 @@ class LoginController extends Controller
         if($response->getStatusCode() == 200){
             request()->session()->regenerate();
 
-            $userData = [
-                'token' => $valores['token'],
-                'usuario' => $valores['usuario']
-            ];
+            $token = $valores['token'];
+            $usuario = $valores['usuario'];
 
-            $cookie = Cookie('gtoken', json_encode($userData), getenv('SESSION_LIFETIME'));
+            $request->session()->put('gtoken', $token);
+
+            Cache::put($token, $usuario, getenv('SESSION_LIFETIME'));
 
             return redirect()->route('tareas.inicio')->with([
-                'usuario' => $valores['usuario'],
+                'usuario' => $usuario,
             ])->withErrors([
                 'message' => $valores['message'],
-            ])->withCookie($cookie);
+            ]);
         }
 
         if($response->getStatusCode() == 401 || $response->getStatusCode() == 500){
@@ -60,10 +61,9 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         try {
-            if(Cookie::has('gtoken')){
-                $userData = Cookie::get('gtoken');
-                $token = json_decode($userData)->token;
+            $token = session('gtoken');
 
+            if(Cache::has($token)){
                 if(isset($token)){
                     $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
                     ->get(getenv('GTOAUTH_LOGOUT'));
@@ -80,12 +80,11 @@ class LoginController extends Controller
                 }
             }
 
-            if(Cookie::has('gtoken') == null){
+            if(Cache::has($token) == null){
                 $message = 'Tu sesión ha expirado.';
             }
 
-            Cache::forget('gtoken');
-            Cookie::queue(Cookie::forget('gtoken'));
+            Cache::forget($token);
 
             $request->session()->invalidate();
             Auth::guard('user')->logout();

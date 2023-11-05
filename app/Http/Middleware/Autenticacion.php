@@ -18,10 +18,10 @@ class Autenticacion
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Cookie::has('gtoken')){
-            $cookie = json_decode(Cookie::get('gtoken'), true);
-            $token = $cookie['token'];
-            $usuario = $cookie['usuario'];
+        $token = $request->session()->get('gtoken');
+
+        if(Cache::has($token)){
+            $usuario = Cache::get($token);
 
             $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
             ->get(getenv('GTOAUTH_AUTENTICADO'));

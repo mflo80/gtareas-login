@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
@@ -11,16 +12,14 @@ class TareaController extends Controller
 {
     public function index()
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         return view('tareas.crear', ['usuario' => $usuario]);
     }
 
     public function guardar(Request $request)
     {
-        $userData = $this->getActiveUserToken();
-        $usuario = json_decode($userData)->usuario;
+        $usuario = $this->getActiveUserToken();
 
         $datos = $request->validate([
             'titulo' => ['required', 'string'],
@@ -40,7 +39,7 @@ class TareaController extends Controller
         $fechaHoraFin = DateTime::createFromFormat('Y-m-d\TH:i', $datos['fecha_hora_fin']);
         $datos['fecha_hora_fin'] = $fechaHoraFin->format('Y-m-d H:i:s');
 
-        $datos['id_usuario'] = $usuario->id;
+        $datos['id_usuario'] = $usuario['id'];
 
         $response = Http::withHeaders([ "Accept" => "application/json"])
         -> post(getenv("GTAPI_TAREAS"), $datos);
@@ -60,7 +59,8 @@ class TareaController extends Controller
 
     public function getActiveUserToken()
     {
-        $userData = Cookie::get('gtoken');
+        $token = session('gtoken');
+        $userData = Cache::get($token);
         return $userData;
     }
 }
