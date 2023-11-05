@@ -31,7 +31,7 @@
             <li><a href="ayuda" class="menu-opcion-5">Ayuda</a></li>
             <li><a href="logout" class="menu-opcion-6">Cerrar Sesión</a></li>
             <div class="usuario">
-                <a>({{ auth()->user()->nombre }} {{ auth()->user()->apellido }})</a>
+                <a>({{ $usuario->nombre }} {{ $usuario->apellido }})</a>
             </div>
         </ul>
         <a href="#" class="toggle"><img class="menu-img" src="{{ asset('/img/barra-de-menu.png') }}"

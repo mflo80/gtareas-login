@@ -9,11 +9,13 @@ class InicioController extends Controller
 {
     public function index()
     {
-        $token = $this->getActiveUserToken(); // Obtiene el token del usuario activo
+        $userData = $this->getActiveUserToken();
+        $token = json_decode($userData)->token;
+        $usuario = json_decode($userData)->usuario;
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
-            "Authorization" => "Bearer $token" // Incluye el token en los encabezados
+            "Authorization" => "Bearer $token"
         ])->get(getenv('GTAPI_TAREAS'));
 
         if ($response->successful()) {
@@ -25,39 +27,49 @@ class InicioController extends Controller
                 $tareasPorCategoria[$tarea['categoria']][] = $tarea;
             }
 
-            return view('tareas.inicio', ['tareasPorCategoria' => $tareasPorCategoria]);
-        } else {
-            // Maneja el caso en que la respuesta no sea exitosa
-            return redirect()->to('logout')->withErrors([
-                'message' => "Error al obtener las tareas",
-            ]);
+            return view('tareas.inicio', ['tareasPorCategoria' => $tareasPorCategoria], ['usuario' => $usuario]);
         }
-    }
 
-    public function getActiveUserToken()
-    {
-        $userData = Cookie::get('token');
-        $token = json_decode($userData)->token;
-        return $token;
+        return redirect()->to('logout')->withErrors([
+            'message' => "Error al obtener las tareas",
+        ]);
     }
 
     public function ayuda()
     {
-        return view('tareas.ayuda');
+        $userData = $this->getActiveUserToken();
+        $usuario = json_decode($userData)->usuario;
+
+        return view('tareas.ayuda', ['usuario' => $usuario]);
     }
 
     public function buscar()
     {
-        return view('tareas.buscar');
+        $userData = $this->getActiveUserToken();
+        $usuario = json_decode($userData)->usuario;
+
+        return view('tareas.buscar', ['usuario' => $usuario]);
     }
 
     public function historial_comentarios()
     {
-        return view('historial.comentarios');
+        $userData = $this->getActiveUserToken();
+        $usuario = json_decode($userData)->usuario;
+
+        return view('historial.comentarios', ['usuario' => $usuario]);
     }
 
     public function historial_tareas()
     {
-        return view('historial.tareas');
+        $userData = $this->getActiveUserToken();
+        $usuario = json_decode($userData)->usuario;
+
+        return view('historial.tareas', ['usuario' => $usuario]);
+    }
+
+    public function getActiveUserToken()
+    {
+        $userData = Cookie::get('gtoken');
+        return $userData;
     }
 }

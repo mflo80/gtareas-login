@@ -10,7 +10,7 @@ use App\Http\Controllers\PasswordController;
 
 Route::view('/', "index")->name('index');
 
-Route::controller(InicioController::class)->middleware('auth')->group(function () {
+Route::controller(InicioController::class)->middleware('autenticacion')->group(function () {
     Route::get('inicio', 'index')->name('tareas.inicio');
     Route::get('ayuda', 'ayuda')->name('tareas.ayuda');
     Route::get('buscar', 'buscar')->name('tareas.buscar');
@@ -18,7 +18,7 @@ Route::controller(InicioController::class)->middleware('auth')->group(function (
     Route::get('historial-tareas', 'historial_tareas')->name('historial.tareas');
 });
 
-Route::controller(TareaController::class)->middleware('auth')->group(function () {
+Route::controller(TareaController::class)->middleware('autenticacion')->group(function () {
     Route::get('crear-tarea', 'index')->name('tareas.crear');
     Route::post('crear-tarea', 'guardar');
 });
@@ -26,7 +26,7 @@ Route::controller(TareaController::class)->middleware('auth')->group(function ()
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'index')->name('auth.login');
     Route::post('login', 'login');
-    Route::get('logout', 'logout')->middleware('auth')->name('auth.logout');
+    Route::get('logout', 'logout')->middleware('autenticacion')->name('auth.logout');
 });
 
 Route::controller(RegistroController::class)->middleware('guest')->group(function () {

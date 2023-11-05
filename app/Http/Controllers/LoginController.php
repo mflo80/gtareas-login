@@ -33,19 +33,19 @@ class LoginController extends Controller
 
         $valores = json_decode($response->body(), true);
 
-        if($response->getStatusCode() == 200 && Auth::attempt($credenciales)){
+        if($response->getStatusCode() == 200){
             request()->session()->regenerate();
 
-            $user = Auth::user();
-			$token = $valores['token'];
             $userData = [
-                'id' => $user->id,
-                'token' => $token,
+                'token' => $valores['token'],
+                'usuario' => $valores['usuario']
             ];
 
-            $cookie = Cookie('token', json_encode($userData), getenv('SESSION_EXPIRATION'));
+            $cookie = Cookie('gtoken', json_encode($userData), getenv('SESSION_LIFETIME'));
 
-            return redirect()->route('tareas.inicio')->withErrors([
+            return redirect()->route('tareas.inicio')->with([
+                'usuario' => $valores['usuario'],
+            ])->withErrors([
                 'message' => $valores['message'],
             ])->withCookie($cookie);
         }
@@ -60,8 +60,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         try {
-            if(Cookie::has('token')){
-                $userData = Cookie::get('token');
+            if(Cookie::has('gtoken')){
+                $userData = Cookie::get('gtoken');
                 $token = json_decode($userData)->token;
 
                 if(isset($token)){
@@ -80,12 +80,12 @@ class LoginController extends Controller
                 }
             }
 
-            if(Cookie::has('token') == null){
+            if(Cookie::has('gtoken') == null){
                 $message = 'Tu sesión ha expirado.';
             }
 
-            Cache::forget('token');
-            Cookie::queue(Cookie::forget('token'));
+            Cache::forget('gtoken');
+            Cookie::queue(Cookie::forget('gtoken'));
 
             $request->session()->invalidate();
             Auth::guard('user')->logout();
