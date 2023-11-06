@@ -302,8 +302,107 @@ th {
     background-color: #3e8e41;
 }
 
+@media screen and (min-width: 921px) and (max-width: 1200px) {
+    body{
+        overflow-y: auto;
+    }
 
-@media screen and (max-width: 768px) {
+    .sectores {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: min-content min-content;
+        grid-template-areas:
+            "sector-1 sector-2 sector-3"
+            "sector-4 sector-5 .";
+        grid-gap: 1rem;
+    }
+
+    .sector:nth-child(-n+5) {
+        grid-area: sector-n;
+    }
+
+    .sector {
+        width: calc(100% - 1rem);
+    }
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 920px) {
+    body{
+        overflow-y: auto;
+    }
+
+    .titulo a {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .usuario {
+        justify-content: flex-end;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 6rem;
+        right: 0;
+        width: 100%;
+        background-color:  rgb(1, 51, 92);
+        padding: 1rem;
+        z-index: 1;
+    }
+
+    .menu li {
+        margin: 1rem 0;
+        text-align: right;
+    }
+
+    .menu li a {
+        color: bisque;
+    }
+
+    .toggle {
+        display: block;
+    }
+
+    .toggle img{
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .dropdown-content {
+        right: 0;
+        background-color:  rgb(5, 44, 78);
+    }
+
+    .sectores {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: min-content min-content min-content;
+        grid-template-areas:
+            "sector-1 sector-2"
+            "sector-3 sector-4"
+            "sector-5 .";
+        grid-gap: 1rem;
+    }
+
+    .sector:nth-child(-n+5) {
+        grid-area: sector-n;
+    }
+
+    .sector {
+        width: calc(100% - 1rem);
+    }
+}
+
+@media screen and (max-width: 600px) {
     body{
         overflow-y: auto;
     }
@@ -371,5 +470,11 @@ th {
     .tarea-texto {
         font-size: 1.2rem;
     }
+
+    footer{
+        display: none;
+    }
 }
+
+
 

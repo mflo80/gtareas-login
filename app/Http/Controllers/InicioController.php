@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
 class InicioController extends Controller
@@ -31,7 +29,7 @@ class InicioController extends Controller
         }
 
         return redirect()->to('logout')->withErrors([
-            'message' => "Error al obtener las tareas",
+            'message' => "Error al obtener las tareas.",
         ]);
     }
 
@@ -61,12 +59,5 @@ class InicioController extends Controller
         $usuario = $this->getActiveUserToken();
 
         return view('historial.tareas', ['usuario' => $usuario]);
-    }
-
-    public function getActiveUserToken()
-    {
-        $token = session('gtoken');
-        $userData = Cache::get($token);
-        return $userData;
     }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
 class TareaController extends Controller
@@ -55,12 +53,5 @@ class TareaController extends Controller
         return redirect()->route('tareas.crear')->withErrors([
             'message' => $valores['message'],
         ]);
-    }
-
-    public function getActiveUserToken()
-    {
-        $token = session('gtoken');
-        $userData = Cache::get($token);
-        return $userData;
     }
 }

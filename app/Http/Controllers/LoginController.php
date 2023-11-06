@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
@@ -42,7 +40,7 @@ class LoginController extends Controller
 
             $request->session()->put('gtoken', $token);
 
-            Cache::put($token, $usuario, getenv('SESSION_LIFETIME'));
+            Cache::put($token, $usuario, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
 
             return redirect()->route('tareas.inicio')->with([
                 'usuario' => $usuario,
@@ -71,9 +69,9 @@ class LoginController extends Controller
                     $valores = json_decode($response->body(), true);
 
                     if($response->getStatusCode() == 200 ||
-                        $response->getStatusCode() == 403 ||
-                        $response->getStatusCode() == 404 ||
-                        $response->getStatusCode() == 500){
+                       $response->getStatusCode() == 403 ||
+                       $response->getStatusCode() == 404 ||
+                       $response->getStatusCode() == 500){
 
                         $message = $valores['message'];
                     }
@@ -87,7 +85,8 @@ class LoginController extends Controller
             Cache::forget($token);
 
             $request->session()->invalidate();
-            Auth::guard('user')->logout();
+
+            //Auth::guard('user')->logout();
 
             return redirect()->to('login')->withErrors([
                 'message' => $message,

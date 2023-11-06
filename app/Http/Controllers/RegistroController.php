@@ -17,13 +17,12 @@ class RegistroController extends Controller
         $datos = $request->validate([
             'nombre' => ['required', 'string'],
             'apellido' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'unique:users'],
+            'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ], [
             'nombre.required' => 'Debe ingresar el nombre.',
             'apellido.required' => 'Debe ingresar el apellido.',
             'email.required' => 'Debe ingresar el correo electrónico.',
-            'email.unique' => 'El correo electrónico ya se encuentra registrado.',
             'password.required' => 'Debe ingresar la contraseña.',
             'password.min' => 'La contraseña debe contener al menos 6 caracteres.',
             'password.confirmed' => 'Las contraseñas no coinciden.',
@@ -39,5 +38,15 @@ class RegistroController extends Controller
                 'message' => $valores['message'],
             ]);
         }
+
+        if($response->getStatusCode() == 400){
+            return back()->withErrors([
+                'message' => $valores['message'],
+            ])->withInput();
+        }
+
+        return back()->withErrors([
+            'message' => 'Hubo un problema con el registro, intente de nuevo.'
+        ]);
     }
 }

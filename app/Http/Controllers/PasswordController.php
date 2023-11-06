@@ -26,10 +26,6 @@ class PasswordController extends Controller
 
         $valores = json_decode($response->body(), true);
 
-        if($response->getStatusCode() == 200){
-            Cache::add($valores['datos']['token'], $valores['datos'], now()->addMinutes(15));
-        }
-
         return back()->withErrors([
             'message' => $valores['message'],
         ])->onlyInput('email');
@@ -42,8 +38,13 @@ class PasswordController extends Controller
 
     public function form_password($token)
     {
-        if(Cache::get($token)){
-            $datos = Cache::get($token);
+        $response = Http::withHeaders([ "Accept" => "application/json"])
+        -> get(getenv("GTOAUTH_PASSWORD") . "/" . $token);
+
+        $valores = json_decode($response->body(), true);
+
+        if($response->getStatusCode() == 200){
+            $datos = $valores['datos'];
             return view('auth.password', ['token' => $token])->with('datos', $datos);
         }
 

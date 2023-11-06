@@ -8,7 +8,6 @@ Herramientas utilizadas para realizar el mismo:
 - Docker / Compose
 - Laravel 10
 - PHP 8.2
-- MySQL 8.1
 
 El código del resto de los contenedores se encuentra mencionado en:
 - https://github.com/mflo80/gtareas-docker
