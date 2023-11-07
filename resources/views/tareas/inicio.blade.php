@@ -34,20 +34,21 @@
                             </tr>
                             <tr>
                                 <td class="tarea-datos">
-                                    <div class="tarea-comentarios">
+                                    <span class="tarea-comentarios">
                                         <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
                                         <span>{{ rand(1, 20) }}</span>
-                                    </div>
-                                    <div class="tarea-usuarios">
+                                    </span>
+                                    <span class="tarea-usuarios">
                                         <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
                                         <span>{{ rand(1, 10) }}</span>
-                                    </div>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="tarea-botones">
                                     <button class="ver">Ver</button>
-                                    <button class="modificar">Modificar</button>
+                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                     <button class="comentar">Comentar</button>
                                 </td>
                             </tr>
@@ -88,20 +89,21 @@
                             </tr>
                             <tr>
                                 <td class="tarea-datos">
-                                    <div class="tarea-comentarios">
+                                    <span class="tarea-comentarios">
                                         <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
                                         <span>{{ rand(1, 20) }}</span>
-                                    </div>
-                                    <div class="tarea-usuarios">
+                                    </span>
+                                    <span class="tarea-usuarios">
                                         <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
                                         <span>{{ rand(1, 10) }}</span>
-                                    </div>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="tarea-botones">
                                     <button class="ver">Ver</button>
-                                    <button class="modificar">Modificar</button>
+                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                     <button class="comentar">Comentar</button>
                                 </td>
                             </tr>
@@ -142,20 +144,21 @@
                             </tr>
                             <tr>
                                 <td class="tarea-datos">
-                                    <div class="tarea-comentarios">
+                                    <span class="tarea-comentarios">
                                         <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
                                         <span>{{ rand(1, 20) }}</span>
-                                    </div>
-                                    <div class="tarea-usuarios">
+                                    </span>
+                                    <span class="tarea-usuarios">
                                         <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
                                         <span>{{ rand(1, 10) }}</span>
-                                    </div>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="tarea-botones">
                                     <button class="ver">Ver</button>
-                                    <button class="modificar">Modificar</button>
+                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                     <button class="comentar">Comentar</button>
                                 </td>
                             </tr>
@@ -196,20 +199,21 @@
                             </tr>
                             <tr>
                                 <td class="tarea-datos">
-                                    <div class="tarea-comentarios">
+                                    <span class="tarea-comentarios">
                                         <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
                                         <span>{{ rand(1, 20) }}</span>
-                                    </div>
-                                    <div class="tarea-usuarios">
+                                    </span>
+                                    <span class="tarea-usuarios">
                                         <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
                                         <span>{{ rand(1, 10) }}</span>
-                                    </div>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="tarea-botones">
                                     <button class="ver">Ver</button>
-                                    <button class="modificar">Modificar</button>
+                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                     <button class="comentar">Comentar</button>
                                 </td>
                             </tr>
@@ -250,20 +254,21 @@
                             </tr>
                             <tr>
                                 <td class="tarea-datos">
-                                    <div class="tarea-comentarios">
+                                    <span class="tarea-comentarios">
                                         <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
                                         <span>{{ rand(1, 20) }}</span>
-                                    </div>
-                                    <div class="tarea-usuarios">
+                                    </span>
+                                    <span class="tarea-usuarios">
                                         <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
                                         <span>{{ rand(1, 10) }}</span>
-                                    </div>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="tarea-botones">
                                     <button class="ver">Ver</button>
-                                    <button class="modificar">Modificar</button>
+                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                     <button class="comentar">Comentar</button>
                                 </td>
                             </tr>

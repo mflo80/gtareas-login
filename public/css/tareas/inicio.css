@@ -4,7 +4,13 @@
 }
 
 nav {
+    position: fixed;
     display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    z-index: 100;
     justify-content: space-between;
     align-items: center;
     background-color:  rgb(1, 51, 92);
@@ -135,9 +141,10 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    height: 90vh;
-    overflow-y: auto;
+    height: auto;
     padding: .5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .sector {
@@ -302,11 +309,39 @@ th {
     background-color: #3e8e41;
 }
 
-@media screen and (min-width: 921px) and (max-width: 1200px) {
-    body{
-        overflow-y: auto;
-    }
+.error-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    margin-left: -8rem;
+}
 
+.error-subtitulo{
+    color: orange;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 2rem;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.error-texto{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.paginas-subtitulo{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 10rem;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+@media screen and (min-width: 921px) and (max-width: 1200px) {
     .sectores {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -317,10 +352,6 @@ th {
         grid-gap: 1rem;
     }
 
-    .sector:nth-child(-n+5) {
-        grid-area: sector-n;
-    }
-
     .sector {
         width: calc(100% - 1rem);
     }
@@ -329,7 +360,7 @@ th {
 
 @media screen and (min-width: 601px) and (max-width: 920px) {
     body{
-        overflow-y: auto;
+        min-height: 100vh;
     }
 
     .titulo a {
@@ -347,9 +378,9 @@ th {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 6rem;
+        top: 4rem;
         right: 0;
-        width: 100%;
+        width: 45%;
         background-color:  rgb(1, 51, 92);
         padding: 1rem;
         z-index: 1;
@@ -393,10 +424,6 @@ th {
         grid-gap: 1rem;
     }
 
-    .sector:nth-child(-n+5) {
-        grid-area: sector-n;
-    }
-
     .sector {
         width: calc(100% - 1rem);
     }
@@ -404,7 +431,15 @@ th {
 
 @media screen and (max-width: 600px) {
     body{
-        overflow-y: auto;
+        min-height: 100vh;
+    }
+
+    nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
     }
 
     .titulo a {
@@ -422,9 +457,9 @@ th {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 6rem;
+        top: 4rem;
         right: 0;
-        width: 100%;
+        width: 45%;
         background-color:  rgb(1, 51, 92);
         padding: 1rem;
         z-index: 1;
@@ -458,10 +493,12 @@ th {
     }
 
     .sectores {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
         flex-direction: column;
         width: auto;
         height: auto;
-    }
+   }
 
     .sector {
         width: 95%;
@@ -469,10 +506,6 @@ th {
 
     .tarea-texto {
         font-size: 1.2rem;
-    }
-
-    footer{
-        display: none;
     }
 }
 

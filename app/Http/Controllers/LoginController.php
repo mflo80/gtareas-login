@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Http;
 class LoginController extends Controller
 {
     public function index(){
-        if(auth()->check()) {
-            return redirect()->to('inicio');
+        $token = session()->get('gtoken');
+
+        if ($token) {
+            if(Cache::has($token)){
+                return redirect()->to('inicio');
+            }
         }
 
         return view('auth.login');

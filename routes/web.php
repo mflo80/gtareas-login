@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,6 @@ use App\Http\Controllers\PasswordController;
 Route::view('/', "index")->name('index');
 
 Route::controller(InicioController::class)->middleware('autenticacion')->group(function () {
-    Route::get('inicio', 'index')->name('tareas.inicio');
     Route::get('ayuda', 'ayuda')->name('tareas.ayuda');
     Route::get('buscar', 'buscar')->name('tareas.buscar');
     Route::get('historial-comentarios', 'historial_comentarios')->name('historial.comentarios');
@@ -19,8 +19,10 @@ Route::controller(InicioController::class)->middleware('autenticacion')->group(f
 });
 
 Route::controller(TareaController::class)->middleware('autenticacion')->group(function () {
-    Route::get('crear-tarea', 'index')->name('tareas.crear');
+    Route::get('inicio', 'index')->name('tareas.inicio');
+    Route::get('crear-tarea', 'form_crear')->name('tareas.crear');
     Route::post('crear-tarea', 'guardar');
+    Route::get('modificar-tarea-{id}', 'form_modificar')->name('tareas.modificar');
 });
 
 Route::controller(LoginController::class)->group(function () {
@@ -40,4 +42,12 @@ Route::controller(PasswordController::class)->middleware('guest')->group(functio
     Route::get('password', 'goto_restablecer');
     Route::get('password-{token}', 'form_password')->name('auth.password');
     Route::post('password', 'cambiar_password');
+});
+
+Route::controller(ErrorController::class)->middleware('autenticacion')->group(function () {
+    Route::get('error-404', 'index')->name('tareas.error');
+});
+
+Route::fallback(function () {
+    return redirect()->route('tareas.error');
 });

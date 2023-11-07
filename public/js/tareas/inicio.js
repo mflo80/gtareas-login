@@ -28,3 +28,13 @@ function drop(event) {
         parent.removeChild(document.getElementById(data));
     }
 }
+
+// Botón para modificar las tareas
+
+$(document).ready(function(){
+    $("[id^='botonModificar']").click(function(){
+        window.location.href = $(this).data('url');
+    });
+});
+
+

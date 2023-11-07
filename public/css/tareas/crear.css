@@ -1,16 +1,21 @@
+body {
+	height: 98vh;
+}
+
 .contenedor-crear {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 45rem;
+    height: 55rem;
     transform: translate(-50%, -50%);
-    height: 75%;
     justify-content: center;
     align-items: center;
 }
 
 .formulario-crear {
-    width: 45rem;
-    height: 55rem;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,14 +158,25 @@ input[type="datetime"]::-webkit-clear-button {
 	border-radius: .4rem;
 }
 
-@media (max-width: 768px) {
+@media (max-height: 920px) {
     .contenedor-crear {
-        top: 42%;
+        top: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        height: 80vh;
+        overflow-x: hidden;
+    }
+
+    .contenedor-crear {
+        top: 55%;
     }
 
     .formulario-crear {
-        width: 84%;
-        margin: 0% 8% 0 8%;
+        width: 82%;
+        margin: 0% 9% 0 9%;
     }
 
     .titulo-crear {

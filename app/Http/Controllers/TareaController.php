@@ -10,6 +10,33 @@ class TareaController extends Controller
 {
     public function index()
     {
+        $token = session('gtoken');
+        $usuario = $this->getActiveUserToken();
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->get(getenv('GTAPI_TAREAS'));
+
+        if ($response->successful()) {
+            $tareas = json_decode($response->body(), true);
+            $tareas = $tareas['tareas'] ?? [];
+
+            $tareasPorCategoria = [];
+            foreach ($tareas as $tarea) {
+                $tareasPorCategoria[$tarea['categoria']][] = $tarea;
+            }
+
+            return view('tareas.inicio', ['tareasPorCategoria' => $tareasPorCategoria], ['usuario' => $usuario]);
+        }
+
+        return redirect()->to('logout')->withErrors([
+            'message' => "Error al obtener las tareas.",
+        ]);
+    }
+
+    public function form_crear()
+    {
         $usuario = $this->getActiveUserToken();
 
         return view('tareas.crear', ['usuario' => $usuario]);
@@ -51,6 +78,30 @@ class TareaController extends Controller
         }
 
         return redirect()->route('tareas.crear')->withErrors([
+            'message' => $valores['message'],
+        ]);
+    }
+
+    public function form_modificar($id)
+    {
+        $token = session('gtoken');
+        $usuario = $this->getActiveUserToken();
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->get(getenv('GTAPI_TAREAS')."/".$id);
+
+        $valores = json_decode($response->body(), true);
+
+        if ($response->successful()) {
+            $tarea = json_decode($response->body(), true);
+            $tarea = $tarea['tarea'] ?? [];
+
+            return view('tareas.modificar', ['id' => $id, 'usuario' => $usuario, 'tarea' => $tarea]);
+        }
+
+        return redirect()->route('tareas.error')->withErrors([
             'message' => $valores['message'],
         ]);
     }
