@@ -4,8 +4,9 @@
 
     <div class="formulario">
         <img class="logo" src="{{ asset('/img/logo.png') }}" alt="LOGO" />
-        <form name="contrasena" action="password" method="post">
+        <form name="contrasena" action="password" method="POST">
             @csrf
+            @method('PUT')
 
             <input type="password" id="password" name="password" placeholder="Nueva Contraseña" size="255" min="6" />
 

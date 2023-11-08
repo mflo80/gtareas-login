@@ -63,3 +63,11 @@ textarea.addEventListener('input', () => {
         textarea.value = text.slice(0, maxLengthTextArea);
     }
 });
+
+// Modal de confirmación de eliminación y modificación
+
+$(document).ready(function() {
+    $('#confirmCrearButton').on('click', function() {
+        $('#crear-tarea').submit();
+    });
+});

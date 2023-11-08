@@ -52,3 +52,16 @@ textarea.addEventListener('input', () => {
         textarea.value = text.slice(0, maxLengthTextArea);
     }
 });
+
+// Modal de confirmación de eliminación y modificación
+
+$(document).ready(function() {
+    $('.btn-eliminar').on('click', function() {
+        var deleteUrl = $(this).data('url');
+        $('#confirmDeleteButton').attr('href', deleteUrl);
+    });
+
+    $('#confirmModificarButton').on('click', function() {
+        $('#formulario').submit();
+    });
+});

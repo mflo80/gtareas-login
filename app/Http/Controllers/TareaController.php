@@ -44,6 +44,7 @@ class TareaController extends Controller
 
     public function guardar(Request $request)
     {
+        $token = session('gtoken');
         $usuario = $this->getActiveUserToken();
 
         $datos = $request->validate([
@@ -66,8 +67,10 @@ class TareaController extends Controller
 
         $datos['id_usuario'] = $usuario['id'];
 
-        $response = Http::withHeaders([ "Accept" => "application/json"])
-        -> post(getenv("GTAPI_TAREAS"), $datos);
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->post(getenv("GTAPI_TAREAS"), $datos);
 
         $valores = json_decode($response->body(), true);
 
@@ -102,6 +105,50 @@ class TareaController extends Controller
         }
 
         return redirect()->route('tareas.error')->withErrors([
+            'message' => $valores['message'],
+        ]);
+    }
+
+    public function actualizar(Request $request)
+    {
+        $token = session('gtoken');
+        $usuario = $this->getActiveUserToken();
+
+        $tarea = $request->validate([
+            'id' => ['required', 'string'],
+            'titulo' => ['required', 'string'],
+            'texto' => ['required', 'string'],
+            'fecha_hora_inicio' => ['required', 'date_format:Y-m-d\TH:i'],
+            'fecha_hora_fin' => ['required', 'date_format:Y-m-d\TH:i'],
+            'categoria' => ['required', 'string'],
+            'estado' => ['required', 'string'],
+        ], [
+            'titulo.required' => 'Debe ingresar el título de la tarea.',
+            'texto.required' => 'Debe ingresar el texto de la tarea.',
+        ]);
+
+        $fechaHoraInicio = DateTime::createFromFormat('Y-m-d\TH:i', $tarea['fecha_hora_inicio']);
+        $tarea['fecha_hora_inicio'] = $fechaHoraInicio->format('Y-m-d H:i:s');
+
+        $fechaHoraFin = DateTime::createFromFormat('Y-m-d\TH:i', $tarea['fecha_hora_fin']);
+        $tarea['fecha_hora_fin'] = $fechaHoraFin->format('Y-m-d H:i:s');
+
+        $tarea['id_usuario'] = $usuario['id'];
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->put(getenv("GTAPI_TAREAS")."/".$tarea['id'], $tarea);
+
+        $valores = json_decode($response->body(), true);
+
+        if($response->getStatusCode() == 200){
+            return redirect()->route('tareas.modificar', ['id' => $tarea['id']])->withErrors([
+                'message' => $valores['message'],
+            ]);
+        }
+
+        return redirect()->route('tareas.inicio')->withErrors([
             'message' => $valores['message'],
         ]);
     }

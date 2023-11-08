@@ -8,7 +8,8 @@
     <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/inicio.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/crear.css') }}" rel="stylesheet">
-</head>
+    <link href="{{ asset('/css/tareas/eliminar.css') }}" rel="stylesheet">
+    </head>
 
 <body>
     <nav>

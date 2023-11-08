@@ -8,54 +8,57 @@
             <div>
                 <a class="sector-titulo">Análisis</a>
             </div>
-            @if (!empty($tareasPorCategoria['Análisis'] ?? []))
-                @foreach ($tareasPorCategoria['Análisis'] ?? [] as $tarea)
-                    <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
-                        <thead>
-                            <tr>
-                                <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tarea-texto">{{ $tarea['texto'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-inicia">
-                                    <a>Inicia:</a>
-                                    <span>{{ $tarea['fecha_hora_inicio'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-finaliza">
-                                    <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-datos">
-                                    <span class="tarea-comentarios">
-                                        <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
-                                        <span>{{ rand(1, 20) }}</span>
-                                    </span>
-                                    <span class="tarea-usuarios">
-                                        <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
-                                        <span>{{ rand(1, 10) }}</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-botones">
-                                    <button class="ver">Ver</button>
-                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
-                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
-                                    <button class="comentar">Comentar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @endforeach
-            @endif
+            @forelse ($tareasPorCategoria['Análisis'] ?? [] as $tarea)
+                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                    <thead>
+                        <tr>
+                            <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tarea-texto">{{ $tarea['texto'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-inicia">
+                                <a>Inicia:</a>
+                                <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-finaliza">
+                                <a>Finaliza:</a>
+                                <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-datos">
+                                <span class="tarea-id">
+                                    <img class="icono-id" src="{{ asset('/img/tarea-id.png') }}" alt="Ícono de Identificación de Tarea" />
+                                    <span>{{ $tarea['id'] }}</span>
+                                </span>
+                                <span class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </span>
+                                <span class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-botones">
+                                <button class="ver">Ver</button>
+                                <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                    data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                                <button class="comentar">Comentar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+            @endforelse
         </div>
     </div>
     <div class="sector sector-2">
@@ -63,54 +66,57 @@
             <div>
                 <a class="sector-titulo">Diseño</a>
             </div>
-            @if (!empty($tareasPorCategoria['Diseño'] ?? []))
-                @foreach ($tareasPorCategoria['Diseño'] ?? [] as $tarea)
-                    <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
-                        <thead>
-                            <tr>
-                                <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tarea-texto">{{ $tarea['texto'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-inicia">
-                                    <a>Inicia:</a>
-                                    <span>{{ $tarea['fecha_hora_inicio'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-finaliza">
-                                    <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-datos">
-                                    <span class="tarea-comentarios">
-                                        <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
-                                        <span>{{ rand(1, 20) }}</span>
-                                    </span>
-                                    <span class="tarea-usuarios">
-                                        <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
-                                        <span>{{ rand(1, 10) }}</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-botones">
-                                    <button class="ver">Ver</button>
-                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
-                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
-                                    <button class="comentar">Comentar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @endforeach
-            @endif
+            @forelse ($tareasPorCategoria['Diseño'] ?? [] as $tarea)
+                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                    <thead>
+                        <tr>
+                            <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tarea-texto">{{ $tarea['texto'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-inicia">
+                                <a>Inicia:</a>
+                                <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-finaliza">
+                                <a>Finaliza:</a>
+                                <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-datos">
+                                <span class="tarea-id">
+                                    <img class="icono-id" src="{{ asset('/img/tarea-id.png') }}" alt="Ícono de Identificación de Tarea" />
+                                    <span>{{ $tarea['id'] }}</span>
+                                </span>
+                                <span class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </span>
+                                <span class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-botones">
+                                <button class="ver">Ver</button>
+                                <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                    data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                                <button class="comentar">Comentar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+            @endforelse
         </div>
     </div>
     <div class="sector sector-3">
@@ -118,54 +124,57 @@
             <div>
                 <a class="sector-titulo">Implementación</a>
             </div>
-            @if (!empty($tareasPorCategoria['Implementación'] ?? []))
-                @foreach ($tareasPorCategoria['Implementación'] ?? [] as $tarea)
-                    <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
-                        <thead>
-                            <tr>
-                                <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tarea-texto">{{ $tarea['texto'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-inicia">
-                                    <a>Inicia:</a>
-                                    <span>{{ $tarea['fecha_hora_inicio'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-finaliza">
-                                    <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-datos">
-                                    <span class="tarea-comentarios">
-                                        <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
-                                        <span>{{ rand(1, 20) }}</span>
-                                    </span>
-                                    <span class="tarea-usuarios">
-                                        <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
-                                        <span>{{ rand(1, 10) }}</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-botones">
-                                    <button class="ver">Ver</button>
-                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
-                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
-                                    <button class="comentar">Comentar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @endforeach
-            @endif
+            @forelse ($tareasPorCategoria['Implementación'] ?? [] as $tarea)
+                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                    <thead>
+                        <tr>
+                            <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tarea-texto">{{ $tarea['texto'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-inicia">
+                                <a>Inicia:</a>
+                                <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-finaliza">
+                                <a>Finaliza:</a>
+                                <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-datos">
+                                <span class="tarea-id">
+                                    <img class="icono-id" src="{{ asset('/img/tarea-id.png') }}" alt="Ícono de Identificación de Tarea" />
+                                    <span>{{ $tarea['id'] }}</span>
+                                </span>
+                                <span class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </span>
+                                <span class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-botones">
+                                <button class="ver">Ver</button>
+                                <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                    data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                                <button class="comentar">Comentar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+            @endforelse
         </div>
     </div>
     <div class="sector sector-4">
@@ -173,54 +182,57 @@
             <div>
                 <a class="sector-titulo">Verificación</a>
             </div>
-            @if (!empty($tareasPorCategoria['Verificación'] ?? []))
-                @foreach ($tareasPorCategoria['Verificación'] ?? [] as $tarea)
-                    <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
-                        <thead>
-                            <tr>
-                                <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tarea-texto">{{ $tarea['texto'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-inicia">
-                                    <a>Inicia:</a>
-                                    <span>{{ $tarea['fecha_hora_inicio'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-finaliza">
-                                    <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-datos">
-                                    <span class="tarea-comentarios">
-                                        <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
-                                        <span>{{ rand(1, 20) }}</span>
-                                    </span>
-                                    <span class="tarea-usuarios">
-                                        <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
-                                        <span>{{ rand(1, 10) }}</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-botones">
-                                    <button class="ver">Ver</button>
-                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
-                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
-                                    <button class="comentar">Comentar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @endforeach
-            @endif
+            @forelse ($tareasPorCategoria['Verificación'] ?? [] as $tarea)
+                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                    <thead>
+                        <tr>
+                            <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tarea-texto">{{ $tarea['texto'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-inicia">
+                                <a>Inicia:</a>
+                                <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-finaliza">
+                                <a>Finaliza:</a>
+                                <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-datos">
+                                <span class="tarea-id">
+                                    <img class="icono-id" src="{{ asset('/img/tarea-id.png') }}" alt="Ícono de Identificación de Tarea" />
+                                    <span>{{ $tarea['id'] }}</span>
+                                </span>
+                                <span class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </span>
+                                <span class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-botones">
+                                <button class="ver">Ver</button>
+                                <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                    data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                                <button class="comentar">Comentar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+            @endforelse
         </div>
     </div>
     <div class="sector sector-5">
@@ -228,54 +240,57 @@
             <div>
                 <a class="sector-titulo">Mantenimiento</a>
             </div>
-            @if (!empty($tareasPorCategoria['Mantenimiento'] ?? []))
-                @foreach ($tareasPorCategoria['Mantenimiento'] ?? [] as $tarea)
-                    <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
-                        <thead>
-                            <tr>
-                                <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tarea-texto">{{ $tarea['texto'] }}</td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-inicia">
-                                    <a>Inicia:</a>
-                                    <span>{{ $tarea['fecha_hora_inicio'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-finaliza">
-                                    <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-datos">
-                                    <span class="tarea-comentarios">
-                                        <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
-                                        <span>{{ rand(1, 20) }}</span>
-                                    </span>
-                                    <span class="tarea-usuarios">
-                                        <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
-                                        <span>{{ rand(1, 10) }}</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tarea-botones">
-                                    <button class="ver">Ver</button>
-                                    <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
-                                        data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
-                                    <button class="comentar">Comentar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                @endforeach
-            @endif
+            @forelse ($tareasPorCategoria['Mantenimiento'] ?? [] as $tarea)
+                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                    <thead>
+                        <tr>
+                            <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tarea-texto">{{ $tarea['texto'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-inicia">
+                                <a>Inicia:</a>
+                                <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-finaliza">
+                                <a>Finaliza:</a>
+                                <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-datos">
+                                <span class="tarea-id">
+                                    <img class="icono-id" src="{{ asset('/img/tarea-id.png') }}" alt="Ícono de Identificación de Tarea" />
+                                    <span>{{ $tarea['id'] }}</span>
+                                </span>
+                                <span class="tarea-comentarios">
+                                    <img class="icono-comentario" src="{{ asset('/img/comentario-100.png') }}" alt="Ícono de Comentario" />
+                                    <span>{{ rand(1, 20) }}</span>
+                                </span>
+                                <span class="tarea-usuarios">
+                                    <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                                    <span>{{ rand(1, 10) }}</span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tarea-botones">
+                                <button class="ver">Ver</button>
+                                <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
+                                    data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                                <button class="comentar">Comentar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+            @endforelse
         </div>
     </div>
 </div>

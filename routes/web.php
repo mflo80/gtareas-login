@@ -23,6 +23,8 @@ Route::controller(TareaController::class)->middleware('autenticacion')->group(fu
     Route::get('crear-tarea', 'form_crear')->name('tareas.crear');
     Route::post('crear-tarea', 'guardar');
     Route::get('modificar-tarea-{id}', 'form_modificar')->name('tareas.modificar');
+    Route::put('modificar-tarea-{id}', 'actualizar');
+    Route::delete('eliminar-tarea-{id}', 'eliminar')->name('tareas.eliminar');
 });
 
 Route::controller(LoginController::class)->group(function () {
@@ -41,7 +43,7 @@ Route::controller(PasswordController::class)->middleware('guest')->group(functio
     Route::post('restablecer', 'send_restablecer');
     Route::get('password', 'goto_restablecer');
     Route::get('password-{token}', 'form_password')->name('auth.password');
-    Route::post('password', 'cambiar_password');
+    Route::put('password', 'cambiar_password');
 });
 
 Route::controller(ErrorController::class)->middleware('autenticacion')->group(function () {
