@@ -36,16 +36,16 @@ class PasswordController extends Controller
         return redirect()->route('auth.restablecer');
     }
 
-    public function form_password($token)
+    public function form_password($tokenResetPassword)
     {
         $response = Http::withHeaders([ "Accept" => "application/json"])
-        -> get(getenv("GTOAUTH_PASSWORD") . "/" . $token);
+        -> get(getenv("GTOAUTH_PASSWORD") . "/" . $tokenResetPassword);
 
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
             $datos = $valores['datos'];
-            return view('auth.password', ['token' => $token])->with('datos', $datos);
+            return view('auth.password', ['token' => $tokenResetPassword])->with('datos', $datos);
         }
 
         return redirect()->route('auth.login')->withErrors([
@@ -71,12 +71,13 @@ class PasswordController extends Controller
         $valores = json_decode($response->body(), true);
 
         if($response->getStatusCode() == 200){
-			if(Cache::get($datos['token'])){
-				Cache::forget($datos['token']);
-			}
             return redirect()->route('auth.login')->withErrors([
                 'message' => $valores['message'],
             ])->onlyInput('email');
         }
+
+        return back()->withErrors([
+            'message' => $valores['message'],
+        ])->onlyInput('email');
     }
 }

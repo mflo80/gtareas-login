@@ -11,10 +11,19 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    public function getActiveUserData()
+    {
+        $sessionId = session('session_id');
+        $datos = Cache::get($sessionId);
+        $userData = $datos['usuario'];
+        return $userData;
+    }
+
     public function getActiveUserToken()
     {
-        $token = session('gtoken');
-        $userData = Cache::get($token);
-        return $userData;
+        $sessionId = session('session_id');
+        $datos = Cache::get($sessionId);
+        $token = $datos['token'];
+        return $token;
     }
 }

@@ -10,7 +10,7 @@ class ErrorController extends Controller
 {
     public function index()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('error.404', ['usuario' => $usuario]);
     }

@@ -13,28 +13,28 @@ class InicioController extends Controller
 
     public function ayuda()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('tareas.ayuda', ['usuario' => $usuario]);
     }
 
     public function buscar()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('tareas.buscar', ['usuario' => $usuario]);
     }
 
     public function historial_comentarios()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('historial.comentarios', ['usuario' => $usuario]);
     }
 
     public function historial_tareas()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('historial.tareas', ['usuario' => $usuario]);
     }

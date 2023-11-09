@@ -20,10 +20,11 @@ Route::controller(InicioController::class)->middleware('autenticacion')->group(f
 
 Route::controller(TareaController::class)->middleware('autenticacion')->group(function () {
     Route::get('inicio', 'index')->name('tareas.inicio');
+    Route::get('ver-tarea-{id}', 'ver')->name('tareas.ver');
     Route::get('crear-tarea', 'form_crear')->name('tareas.crear');
     Route::post('crear-tarea', 'guardar');
     Route::get('modificar-tarea-{id}', 'form_modificar')->name('tareas.modificar');
-    Route::put('modificar-tarea-{id}', 'actualizar');
+    Route::put('modificar-tarea-{id}', 'modificar');
     Route::delete('eliminar-tarea-{id}', 'eliminar')->name('tareas.eliminar');
 });
 

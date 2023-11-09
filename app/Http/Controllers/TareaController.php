@@ -10,8 +10,8 @@ class TareaController extends Controller
 {
     public function index()
     {
-        $token = session('gtoken');
-        $usuario = $this->getActiveUserToken();
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
@@ -35,17 +35,41 @@ class TareaController extends Controller
         ]);
     }
 
+    public function ver($id)
+    {
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->get(getenv('GTAPI_TAREAS')."/".$id);
+
+        $valores = json_decode($response->body(), true);
+
+        if ($response->successful()) {
+            $tarea = json_decode($response->body(), true);
+            $tarea = $tarea['tarea'] ?? [];
+
+            return view('tareas.ver', ['id' => $id, 'usuario' => $usuario, 'tarea' => $tarea]);
+        }
+
+        return redirect()->route('tareas.error')->withErrors([
+            'message' => $valores['message'],
+        ]);
+    }
+
     public function form_crear()
     {
-        $usuario = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         return view('tareas.crear', ['usuario' => $usuario]);
     }
 
     public function guardar(Request $request)
     {
-        $token = session('gtoken');
-        $usuario = $this->getActiveUserToken();
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         $datos = $request->validate([
             'titulo' => ['required', 'string'],
@@ -87,8 +111,8 @@ class TareaController extends Controller
 
     public function form_modificar($id)
     {
-        $token = session('gtoken');
-        $usuario = $this->getActiveUserToken();
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
@@ -109,10 +133,10 @@ class TareaController extends Controller
         ]);
     }
 
-    public function actualizar(Request $request)
+    public function modificar(Request $request)
     {
-        $token = session('gtoken');
-        $usuario = $this->getActiveUserToken();
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
 
         $tarea = $request->validate([
             'id' => ['required', 'string'],

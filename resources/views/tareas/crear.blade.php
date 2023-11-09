@@ -77,8 +77,8 @@
                 ¿Estás seguro de que quieres crear esta tarea?
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-danger" id="confirmCrearButton">Si</a>
+            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
+            <a href="#" class="btn btn-modal" id="confirmCrearButton">Si</a>
             </div>
         </div>
         </div>

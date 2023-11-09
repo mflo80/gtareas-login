@@ -5,16 +5,16 @@
 <div class="contenedor-modificar">
     <div class="formulario-modificar">
         <div class="titulo-modificar">
-            <legend>Modificar Tarea #{{ $tarea['id'] }}</legend>
+            <legend>Tarea #{{ $tarea['id'] }}</legend>
         </div>
 
-        <form method="POST" action="{{ route('tareas.modificar', $tarea['id']) }}" id="formulario">
+        <form method="GET" action="{{ route('tareas.modificar', $tarea['id']) }}" id="formulario">
             @csrf
-            @method('PUT')
+
             <input type="hidden" id="id" name="id" value="{{ $tarea['id'] }}">
 
             <div class="titulo-input">
-                <input type="text" id="titulo" name="titulo" placeholder='Titulo' size="255" value="{{ $tarea['titulo'] }}" autofocus />
+                <input type="text" id="titulo" name="titulo" placeholder='Titulo' size="255" value="{{ $tarea['titulo'] }}" autofocus/>
             </div>
 
             <textarea id="texto" name="texto" placeholder="Ingrese aquí el texto de la tarea...">{{ $tarea['texto'] }}</textarea>
@@ -52,12 +52,7 @@
             </div>
 
             <div class="btn-grupo">
-                <button type="button" class="btn btn-primary btn-block btn-large btn-eliminar btn-eliminar-primary"
-                    data-toggle="modal" data-target="#confirmDeleteModal"
-                    data-url="{{ route('tareas.eliminar', $tarea['id']) }}">Eliminar</button>
-                <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
-                    onClick="location.href='modificar-tarea-{{ $tarea['id'] }}'">Restablecer</button>
-                <button type="button" class="btn btn-primary btn-block btn-large btn-registrar"
+                <button id="botonModificar-{{ $tarea['id'] }}" class="btn btn-primary btn-block btn-large btn-registrar"
                     data-toggle="modal" data-target="#confirmModificarModal">Modificar</button>
             </div>
         </form>
@@ -71,50 +66,14 @@
         @endforeach
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
-            </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres eliminar esta tarea?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmDeleteButton">Si</a>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="confirmModificarModal" tabindex="-1" role="dialog" aria-labelledby="confirmModificarModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="confirmModificarModalLabel">Confirmar modificación</h5>
-            </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres modificar esta tarea?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmModificarButton">Si</a>
-            </div>
-        </div>
-        </div>
-    </div>
-
 </div> <!-- Fin Clase Contenedor Crear -->
 
-<script>window.document.title = 'Gestor de Tareas - Modificar Tarea';</script>
+<script>window.document.title = 'Gestor de Tareas - Tarea';</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script src="{{ asset('js/tareas/modificar.js') }}"></script>
+<script src="{{ asset('js/tareas/ver.js') }}"></script>
 
 @endsection
 

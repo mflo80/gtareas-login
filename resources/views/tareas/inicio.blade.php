@@ -49,7 +49,8 @@
                         </tr>
                         <tr>
                             <td class="tarea-botones">
-                                <button class="ver">Ver</button>
+                                <button id="botonVer-{{ $tarea['id'] }}" class="ver"
+                                    data-url="{{ route('tareas.ver', $tarea['id']) }}">Ver</button>
                                 <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
                                     data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                 <button class="comentar">Comentar</button>
@@ -107,7 +108,8 @@
                         </tr>
                         <tr>
                             <td class="tarea-botones">
-                                <button class="ver">Ver</button>
+                                <button id="botonVer-{{ $tarea['id'] }}" class="ver"
+                                    data-url="{{ route('tareas.ver', $tarea['id']) }}">Ver</button>
                                 <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
                                     data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                 <button class="comentar">Comentar</button>
@@ -165,7 +167,8 @@
                         </tr>
                         <tr>
                             <td class="tarea-botones">
-                                <button class="ver">Ver</button>
+                                <button id="botonVer-{{ $tarea['id'] }}" class="ver"
+                                    data-url="{{ route('tareas.ver', $tarea['id']) }}">Ver</button>
                                 <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
                                     data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                 <button class="comentar">Comentar</button>
@@ -223,7 +226,8 @@
                         </tr>
                         <tr>
                             <td class="tarea-botones">
-                                <button class="ver">Ver</button>
+                                <button id="botonVer-{{ $tarea['id'] }}" class="ver"
+                                    data-url="{{ route('tareas.ver', $tarea['id']) }}">Ver</button>
                                 <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
                                     data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                 <button class="comentar">Comentar</button>
@@ -281,7 +285,8 @@
                         </tr>
                         <tr>
                             <td class="tarea-botones">
-                                <button class="ver">Ver</button>
+                                <button id="botonVer-{{ $tarea['id'] }}" class="ver"
+                                    data-url="{{ route('tareas.ver', $tarea['id']) }}">Ver</button>
                                 <button id="botonModificar-{{ $tarea['id'] }}" class="modificar"
                                     data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
                                 <button class="comentar">Comentar</button>

@@ -18,29 +18,29 @@ class Autenticacion
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $token = $request->session()->get('gtoken');
+        $sessionId = $request->session()->get('session_id');
 
-        if ($token) {
-            if(Cache::has($token)){
-                return $next($request);
+        if ($sessionId && Cache::has($sessionId)) {
+            $datos = Cache::get($sessionId);
+            $token = $datos['token'];
+            $ultimo_acceso = $datos['ultimo_acceso'];
+
+            if ($ultimo_acceso || now()->diffInMinutes($ultimo_acceso) >= 20) {
+                $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
+                    ->get(getenv('GTOAUTH_AUTENTICADO'));
+
+                if($response->getStatusCode() == 401){
+                    return redirect()->route('auth.login')->withErrors([
+                        'message' => 'Se ha vencido la sesión.'
+                    ], 403);
+                }
+
+                if($response->getStatusCode() == 200){
+                    $datos['ultimo_acceso'] = Carbon::now();
+                    Cache::put($sessionId , $datos, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
+                }
             }
-
-            $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
-                ->get(getenv('GTOAUTH_AUTENTICADO'));
-
-            $valores = $response->json();
-
-            if($response->getStatusCode() == 200){
-                $usuario = $valores['usuario'];
-                Cache::put($token , $usuario, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
-                return $next($request);
-            }
-
-            if($response->getStatusCode() == 401){
-                return redirect()->route('auth.login')->withErrors([
-                    'message' => 'Se ha vencido la sesión.'
-                ], 403);
-            }
+            return $next($request);
         }
 
         return redirect()->route('auth.login')->withErrors([

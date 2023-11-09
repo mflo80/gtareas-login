@@ -37,4 +37,10 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("[id^='botonVer']").click(function(){
+        window.location.href = $(this).data('url');
+    });
+});
+
 

@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
     public function index(){
-        $token = session()->get('gtoken');
+        $sessionId = session('session_id');
 
-        if ($token) {
-            if(Cache::has($token)){
+        if ($sessionId) {
+            if(Cache::has($sessionId)){
                 return redirect()->to('inicio');
             }
         }
@@ -39,15 +40,19 @@ class LoginController extends Controller
         if($response->getStatusCode() == 200){
             request()->session()->regenerate();
 
-            $token = $valores['token'];
-            $usuario = $valores['usuario'];
+            $datos = [
+                'token' => $valores['token'],
+                'usuario' => $valores['usuario'],
+                'ultimo_acceso' => Carbon::now(),
+            ];
 
-            $request->session()->put('gtoken', $token);
+            $sessionId = Str::random(40);
 
-            Cache::put($token, $usuario, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
+            Cache::put($sessionId, $datos, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
+            $request->session()->put('session_id', $sessionId);
 
             return redirect()->route('tareas.inicio')->with([
-                'usuario' => $usuario,
+                'usuario' => $datos['usuario'],
             ])->withErrors([
                 'message' => $valores['message'],
             ]);
@@ -63,10 +68,14 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         try {
-            $token = session('gtoken');
+            $sessionId = $request->session()->get('session_id');
 
-            if(Cache::has($token)){
-                if(isset($token)){
+            if(Cache::has($sessionId)){
+                if(isset($sessionId)){
+
+                    $datos = Cache::get($sessionId);
+                    $token = $datos['token'];
+
                     $response = Http::withHeaders(['Authorization' => 'Bearer ' . $token])
                     ->get(getenv('GTOAUTH_LOGOUT'));
 
@@ -82,11 +91,11 @@ class LoginController extends Controller
                 }
             }
 
-            if(Cache::has($token) == null){
+            if(Cache::has($sessionId) == null){
                 $message = 'Tu sesión ha expirado.';
             }
 
-            Cache::forget($token);
+            Cache::forget($sessionId);
 
             $request->session()->invalidate();
 
