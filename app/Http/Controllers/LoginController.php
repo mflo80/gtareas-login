@@ -46,7 +46,9 @@ class LoginController extends Controller
                 'ultimo_acceso' => Carbon::now(),
             ];
 
-            $sessionId = Str::random(40);
+            do {
+                $sessionId = Str::random(40);
+            } while (Cache::has($sessionId));
 
             Cache::put($sessionId, $datos, Carbon::now()->addMinutes(getenv('SESSION_LIFETIME')));
             $request->session()->put('session_id', $sessionId);

@@ -25,7 +25,8 @@ Route::controller(TareaController::class)->middleware('autenticacion')->group(fu
     Route::post('crear-tarea', 'guardar');
     Route::get('modificar-tarea-{id}', 'form_modificar')->name('tareas.modificar');
     Route::put('modificar-tarea-{id}', 'modificar');
-    Route::delete('eliminar-tarea-{id}', 'eliminar')->name('tareas.eliminar');
+    Route::put('modificar-tarea-{id}', 'modificar');
+    Route::delete('eliminar-tarea-{id}', 'eliminar');
 });
 
 Route::controller(LoginController::class)->group(function () {

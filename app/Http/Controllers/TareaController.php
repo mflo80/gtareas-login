@@ -176,4 +176,25 @@ class TareaController extends Controller
             'message' => $valores['message'],
         ]);
     }
+
+    public function eliminar($id){
+        $token = $this->getActiveUserToken();
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->delete(getenv("GTAPI_TAREAS") . "/" . $id);
+
+        $valores = json_decode($response->body(), true);
+
+        if ($response->getStatusCode() == 200) {
+            return redirect()->route('tareas.inicio')->with(
+                'success', 'La tarea fue eliminada correctamente');
+        }
+
+        return redirect()->route('tareas.error')->withErrors([
+            'message' => $valores['message'],
+        ]);
+    }
 }
+

@@ -1,0 +1,28 @@
+.btn-grupo-modificar{
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 13.5rem;
+    margin-top: 2rem;
+}
+
+.btn-grupo-eliminar{
+    position: absolute;
+    display: flex;
+    width: 12.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3.7rem;
+    margin-top: -2.6rem;
+}
+
+.error-grupo-modificar{
+    width: 40rem;
+    height: 5rem;
+    margin-top: 5rem;
+    margin-left: 2.9rem;
+    text-align: center;
+    font-size: 1.3rem;
+}
+

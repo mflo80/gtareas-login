@@ -51,27 +51,45 @@
                 </select>
             </div>
 
-            <div class="btn-grupo">
-                <button type="button" class="btn btn-primary btn-block btn-large btn-eliminar btn-eliminar-primary"
-                    data-toggle="modal" data-target="#confirmDeleteModal"
-                    data-url="{{ route('tareas.eliminar', $tarea['id']) }}">Eliminar</button>
+            <div class="btn-grupo-modificar">
                 <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
                     onClick="location.href='modificar-tarea-{{ $tarea['id'] }}'">Restablecer</button>
                 <button type="button" class="btn btn-primary btn-block btn-large btn-registrar"
                     data-toggle="modal" data-target="#confirmModificarModal">Modificar</button>
             </div>
         </form>
-    </div> <!-- Fin Clase Formulario Crear -->
+    </div> <!-- Fin Clase Formulario Modificar -->
 
-    <div class="error-grupo">
-        <div class="error-mensaje">
-            @foreach ($errors->all() as $message)
-                <p id="error">{{ $message }}</p>
-            @break
-        @endforeach
+    <!-- Modal Modificar -->
+    <div class="modal fade" id="confirmModificarModal" tabindex="-1" role="dialog" aria-labelledby="confirmModificarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="confirmModificarModalLabel">Confirmar modificación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres modificar esta tarea?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
+            <a href="#" class="btn btn-modal" id="confirmModificarButton">Si</a>
+            </div>
+        </div>
+        </div>
     </div>
 
-    <!-- Modal -->
+
+    <!-- Formulario Eliminar -->
+    <form id="deleteForm" action="{{ url('eliminar-tarea-' . $tarea['id']) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <div class="btn-grupo-eliminar">
+            <button type="button" class="btn btn-primary btn-block btn-large btn-eliminar btn-eliminar-primary"
+                data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</button>
+        </div>
+    </form>
+
+    <!-- Modal Eliminar-->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -89,22 +107,12 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmModificarModal" tabindex="-1" role="dialog" aria-labelledby="confirmModificarModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="confirmModificarModalLabel">Confirmar modificación</h5>
-            </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres modificar esta tarea?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmModificarButton">Si</a>
-            </div>
-        </div>
-        </div>
+    <div class="error-grupo-modificar">
+        <div class="error-mensaje">
+            @foreach ($errors->all() as $message)
+                <p id="error">{{ $message }}</p>
+            @break
+        @endforeach
     </div>
 
 </div> <!-- Fin Clase Contenedor Crear -->

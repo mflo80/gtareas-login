@@ -8,7 +8,7 @@
     <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/inicio.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/crear.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/tareas/eliminar.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/tareas/modificar.css') }}" rel="stylesheet">
     </head>
 
 <body>
@@ -51,6 +51,7 @@
 
     <script src="{{ asset('js/externos/jQuery.js') }}"></script>
     <script src="{{ asset('js/tareas/inicio.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

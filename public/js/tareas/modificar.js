@@ -56,12 +56,13 @@ textarea.addEventListener('input', () => {
 // Modal de confirmación de eliminación y modificación
 
 $(document).ready(function() {
-    $('.btn-eliminar').on('click', function() {
-        var deleteUrl = $(this).data('url');
-        $('#confirmDeleteButton').attr('href', deleteUrl);
-    });
-
     $('#confirmModificarButton').on('click', function() {
         $('#formulario').submit();
     });
+
+    $('#confirmDeleteButton').on('click', function() {
+        $('#deleteForm').submit();
+    });
 });
+
+
