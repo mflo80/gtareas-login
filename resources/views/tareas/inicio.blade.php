@@ -3,13 +3,13 @@
 @section('gtareas-inicio')
 
 <div class="sectores">
-    <div class="sector sector-1">
-        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div>
+    <div class="sector sector-1" data-categoria="Análisis">
+        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)" data-categoria="Análisis">
+            <span>
                 <a class="sector-titulo">Análisis</a>
-            </div>
+            </span>
             @forelse ($tareasPorCategoria['Análisis'] ?? [] as $tarea)
-                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                <table draggable="true" ondragstart="drag(event)" id="{{ $tarea['id'] }}">
                     <thead>
                         <tr>
                             <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
@@ -62,13 +62,13 @@
             @endforelse
         </div>
     </div>
-    <div class="sector sector-2">
-        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div>
+    <div class="sector sector-2" data-categoria="Diseño">
+        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)" data-categoria="Diseño">
+            <span>
                 <a class="sector-titulo">Diseño</a>
-            </div>
+            </span>
             @forelse ($tareasPorCategoria['Diseño'] ?? [] as $tarea)
-                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                <table draggable="true" ondragstart="drag(event)" id="{{ $tarea['id'] }}">
                     <thead>
                         <tr>
                             <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
@@ -121,13 +121,13 @@
             @endforelse
         </div>
     </div>
-    <div class="sector sector-3">
-        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div>
+    <div class="sector sector-3" data-categoria="Implementación">
+        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)" data-categoria="Implementación">
+            <span>
                 <a class="sector-titulo">Implementación</a>
-            </div>
+            </span>
             @forelse ($tareasPorCategoria['Implementación'] ?? [] as $tarea)
-                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                <table draggable="true" ondragstart="drag(event)" id="{{ $tarea['id'] }}">
                     <thead>
                         <tr>
                             <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
@@ -180,13 +180,13 @@
             @endforelse
         </div>
     </div>
-    <div class="sector sector-4">
-        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div>
+    <div class="sector sector-4" data-categoria="Verificación">
+        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)" data-categoria="Verificación">
+            <span>
                 <a class="sector-titulo">Verificación</a>
-            </div>
+            </span>
             @forelse ($tareasPorCategoria['Verificación'] ?? [] as $tarea)
-                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                <table draggable="true" ondragstart="drag(event)" id="{{ $tarea['id'] }}">
                     <thead>
                         <tr>
                             <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>
@@ -239,13 +239,13 @@
             @endforelse
         </div>
     </div>
-    <div class="sector sector-5">
-        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div>
+    <div class="sector sector-5" data-categoria="Mantenimiento">
+        <div class="tabla" ondragover="allowDrop(event)" ondrop="drop(event)" data-categoria="Mantenimiento">
+            <span>
                 <a class="sector-titulo">Mantenimiento</a>
-            </div>
+            </span>
             @forelse ($tareasPorCategoria['Mantenimiento'] ?? [] as $tarea)
-                <table draggable="true" ondragstart="drag(event)" id="table-{{ $tarea['id'] }}">
+                <table draggable="true" ondragstart="drag(event)" id="{{ $tarea['id'] }}">
                     <thead>
                         <tr>
                             <th class="tarea-titulo">{{ $tarea['titulo'] }}</th>

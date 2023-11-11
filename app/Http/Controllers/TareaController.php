@@ -177,6 +177,35 @@ class TareaController extends Controller
         ]);
     }
 
+    public function actualizar_categoria(Request $request, $id)
+    {
+        $token = $this->getActiveUserToken();
+        $usuario = $this->getActiveUserData();
+
+        $tarea = $request->validate([
+            'categoria' => ['required', 'string'],
+        ], [
+            'categoria.required' => 'Debe ingresar la categoría de la tarea.',
+        ]);
+
+        $tarea['id_usuario'] = $usuario['id'];
+
+        $response = Http::withHeaders([
+            "Accept" => "application/json",
+            "Authorization" => "Bearer $token"
+        ])->put(getenv("GTAPI_TAREAS")."/categoria/".$id, $tarea);
+
+        if($response->getStatusCode() == 200){
+            return response()->json([
+                'success' => 'La categoría de la tarea fue actualizada correctamente'
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Hubo un error al actualizar la categoría de la tarea'
+        ], 500);
+    }
+
     public function eliminar($id){
         $token = $this->getActiveUserToken();
 

@@ -25,7 +25,7 @@ Route::controller(TareaController::class)->middleware('autenticacion')->group(fu
     Route::post('crear-tarea', 'guardar');
     Route::get('modificar-tarea-{id}', 'form_modificar')->name('tareas.modificar');
     Route::put('modificar-tarea-{id}', 'modificar');
-    Route::put('modificar-tarea-{id}', 'modificar');
+    Route::put('categoria-tarea-{id}', 'actualizar_categoria');
     Route::delete('eliminar-tarea-{id}', 'eliminar');
 });
 

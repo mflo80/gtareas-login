@@ -9,6 +9,7 @@
     <link href="{{ asset('/css/tareas/inicio.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/crear.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/modificar.css') }}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
 <body>

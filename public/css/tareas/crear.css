@@ -177,10 +177,10 @@ input[type="datetime"]::-webkit-clear-button {
     }
 
     .contenedor-crear {
-        top: 55%;
+        top: 50%;
     }
 
-    .formulario-crear {
+    .formulario-crear{
         width: 82%;
         margin: 0% 9% 0 9%;
     }
@@ -191,5 +191,9 @@ input[type="datetime"]::-webkit-clear-button {
 
     form {
         transform: scale(0.9);
+    }
+
+    .btn-grupo-eliminar{
+        margin-top: -5.2rem;
     }
 }
