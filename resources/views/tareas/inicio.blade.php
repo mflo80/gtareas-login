@@ -300,6 +300,23 @@
     </div>
 </div>
 
+<div class="modal" tabindex="-1" role="dialog" id="modalConfirmarCambioCategoria">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirmar cambio de categoría</h2>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que quieres cambiar la categoría de esta tarea?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCancelarCambioCategoria" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmarCambioCategoria">Sí, cambiar categoría</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     window.document.title = 'Gestor de Tareas';
 </script>

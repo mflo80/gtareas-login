@@ -24,11 +24,11 @@ body {
     align-items: center;
     margin: .3rem;
     box-shadow: inset 0 -.5rem 4.5rem rgba(100, 100, 100, 0.2), 0 .1rem .1rem rgba(255, 255, 255, 0.2);
-    background: linear-gradient(40deg, rgb(85, 101, 138, 0.5), rgb(119, 160, 204, 0.5));
+    background-color: rgb(1, 51, 92);
     border: .2rem solid black;
-
 }
 
+.titulo-ver,
 .titulo-crear,
 .titulo-modificar {
     width: 100%;
@@ -170,7 +170,7 @@ input[type="datetime"]::-webkit-clear-button {
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 600px) {
     body {
         height: 80vh;
         overflow-x: hidden;

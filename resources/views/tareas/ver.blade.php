@@ -2,9 +2,9 @@
 
 @section('gtareas-inicio')
 
-<div class="contenedor-modificar">
-    <div class="formulario-modificar">
-        <div class="titulo-modificar">
+<div class="sectores-comentarios">
+    <div class="sector-comentario sector-comentario-1 formulario-ver">
+        <div class="titulo-ver">
             <legend>Tarea #{{ $tarea['id'] }}</legend>
         </div>
 
@@ -58,20 +58,179 @@
         </form>
     </div> <!-- Fin Clase Formulario Crear -->
 
-    <div class="error-grupo">
-        <div class="error-mensaje">
-            @foreach ($errors->all() as $message)
-                <p id="error">{{ $message }}</p>
-            @break
-        @endforeach
+    <div class="sector-comentario sector-comentario-2">
+        <span>
+            <a class="comentario-titulo">Comentarios</a>
+        </span>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tarea-titulo">{{ $tarea['texto'] }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tarea-inicia">
+                        <a>Fecha comentario:</a>
+                        <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-finaliza">
+                        <a>Última modificación:</a>
+                        <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-datos">
+                        <span class="tarea-id">
+                            <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                            <span>Usuario</span>
+                        </span>
+                        <span class="tarea-botones">
+                            <button id="botonModificar-{{ $tarea['id'] }}" class="comentar"
+                                data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tarea-titulo">{{ $tarea['texto'] }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tarea-inicia">
+                        <a>Fecha comentario:</a>
+                        <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-finaliza">
+                        <a>Última modificación:</a>
+                        <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-datos">
+                        <span class="tarea-id">
+                            <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                            <span>Usuario</span>
+                        </span>
+                        <span class="tarea-botones">
+                            <button id="botonModificar-{{ $tarea['id'] }}" class="comentar"
+                                data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tarea-titulo">{{ $tarea['texto'] }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tarea-inicia">
+                        <a>Fecha comentario:</a>
+                        <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-finaliza">
+                        <a>Última modificación:</a>
+                        <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-datos">
+                        <span class="tarea-id">
+                            <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                            <span>Usuario</span>
+                        </span>
+                        <span class="tarea-botones">
+                            <button id="botonModificar-{{ $tarea['id'] }}" class="comentar"
+                                data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tarea-titulo">{{ $tarea['texto'] }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tarea-inicia">
+                        <a>Fecha comentario:</a>
+                        <span>{{ $tarea['fecha_hora_inicio'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-finaliza">
+                        <a>Última modificación:</a>
+                        <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tarea-datos">
+                        <span class="tarea-id">
+                            <img class="icono-usuario" src="{{ asset('/img/usuario-96.png') }}" alt="Ícono de Usuario" />
+                            <span>Usuario</span>
+                        </span>
+                        <span class="tarea-botones">
+                            <button id="botonModificar-{{ $tarea['id'] }}" class="comentar"
+                                data-url="{{ route('tareas.modificar', $tarea['id']) }}">Modificar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="botones-comentarios">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="tarea-botones">
+                                <button type="button" class="ver"
+                                    data-toggle="modal" data-target="#comentarModal">Comentar</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 
-</div> <!-- Fin Clase Contenedor Crear -->
+<div class="modal fade" id="comentarModal" tabindex="-1" role="dialog" aria-labelledby="comentarModalLabel" aria-hidden="true">
+    <form id="form-comentario">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="comentarModalLabel">Comentar Tarea #{{ $tarea['id'] }}</h5>
+                </div>
+                <div class="modal-body">
+                    <textarea id="contenido" placeholder="Escribe tu comentario aquí"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="confirmComentarButton">Enviar comentario</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
-<script>window.document.title = 'Gestor de Tareas - Tarea';</script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>window.document.title = 'Gestor de Tareas - Tarea Comentarios';</script>
 
 <script src="{{ asset('js/tareas/ver.js') }}"></script>
 

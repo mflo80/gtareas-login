@@ -1,16 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-const toggle = document.querySelector('.toggle');
-const menu = document.querySelector('.menu');
-
-toggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
-});
-
 // Arrastar y soltar tareas entre los sectores
 function allowDrop(event) {
     event.preventDefault();
@@ -37,7 +24,20 @@ function drop(event) {
             }
 
             var categoria = target.getAttribute('data-categoria');
-            updateCategoria(data, categoria);
+
+            // Mostrar el modal de confirmación
+            jQuery("#modalConfirmarCambioCategoria").modal("show");
+
+            // Cuando se hace clic en el botón de cancelación, recargar la página
+            jQuery("#btnCancelarCambioCategoria").on("click", function() {
+                jQuery("#modalConfirmarCambioCategoria").modal("hide");
+                location.reload();
+            });
+
+            jQuery("#btnConfirmarCambioCategoria").on("click", function() {
+                updateCategoria(data, categoria);
+                jQuery("#modalConfirmarCambioCategoria").modal("hide");
+            });
         }
     }
 }
@@ -76,4 +76,12 @@ $(document).ready(function(){
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const toggle = document.querySelector('.toggle');
+    const menu = document.querySelector('.menu');
 
+
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+});

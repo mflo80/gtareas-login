@@ -63,18 +63,18 @@
     <!-- Modal Modificar -->
     <div class="modal fade" id="confirmModificarModal" tabindex="-1" role="dialog" aria-labelledby="confirmModificarModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="confirmModificarModalLabel">Confirmar modificación</h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="confirmModificarModalLabel">Confirmar modificación</h5>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres modificar esta tarea?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <a href="#" class="btn btn-primary" id="confirmModificarButton">Si</a>
+                </div>
             </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres modificar esta tarea?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmModificarButton">Si</a>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -92,18 +92,18 @@
     <!-- Modal Eliminar-->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres eliminar esta tarea?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <a href="#" class="btn btn-primary" id="confirmDeleteButton">Si</a>
+                </div>
             </div>
-            <div class="modal-body">
-                ¿Estás seguro de que quieres eliminar esta tarea?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmDeleteButton">Si</a>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -119,8 +119,6 @@
 
 <script>window.document.title = 'Gestor de Tareas - Modificar Tarea';</script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/tareas/modificar.js') }}"></script>
 
 @endsection

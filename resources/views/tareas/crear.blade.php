@@ -51,7 +51,7 @@
 
             <div class="btn-grupo">
                 <button type="button" class="btn btn-primary btn-block btn-large btn-borrar"
-                    onClick="location.href='crear-tarea'">Borrar</button>
+                    onClick="location.href='crear-tarea'">Vaciar</button>
                 <button type="button" class="btn btn-primary btn-block btn-large btn-registrar"
                     data-toggle="modal" data-target="#confirmCrearModal">Crear</button>
             </div>
@@ -77,8 +77,8 @@
                 ¿Estás seguro de que quieres crear esta tarea?
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-modal" data-dismiss="modal">No</button>
-            <a href="#" class="btn btn-modal" id="confirmCrearButton">Si</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <a href="#" class="btn btn-primary" id="confirmCrearButton">Si</a>
             </div>
         </div>
         </div>
@@ -87,9 +87,6 @@
 </div> <!-- Fin Clase Contenedor Crear -->
 
 <script>window.document.title = 'Gestor de Tareas - Crear Tarea';</script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script src="{{ asset('js/tareas/crear.js') }}"></script>
 

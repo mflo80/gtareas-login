@@ -4,3 +4,9 @@ var inputs = document.querySelectorAll('#formulario input, #formulario textarea,
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].disabled = true;
 }
+
+$(document).ready(function() {
+    $('#confirmComentarButton').on('click', function() {
+        $('#form-comentario').submit();
+    });
+});

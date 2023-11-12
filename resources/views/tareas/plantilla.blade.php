@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Tareas</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Para que funcione el formulario de cambiar categoría al arrastrar una tarea-->
     <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/inicio.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/crear.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/tareas/modificar.css') }}" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    </head>
+    <link href="{{ asset('/css/tareas/ver.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
+    <script src="{{ asset('js/externos/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/tareas/inicio.js') }}"></script>
+    <title>Gestor de Tareas</title>
+</head>
 
 <body>
     <nav>
@@ -36,7 +40,7 @@
                 <a>({{ $usuario['nombre'] }} {{ $usuario['apellido'] }})</a>
             </div>
         </ul>
-        <a href="#" class="toggle"><img class="menu-img" src="{{ asset('/img/barra-de-menu.png') }}"
+        <a href="#" id="toggle" class="toggle"><img class="menu-img" src="{{ asset('/img/barra-de-menu.png') }}"
                 alt="Menú"></a>
     </nav>
 
@@ -49,10 +53,6 @@
             <p>Gestor de Tareas v1.00 ® by Marcelo Florio (2023)</p>
         </div>
     </footer>
-
-    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
-    <script src="{{ asset('js/tareas/inicio.js') }}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

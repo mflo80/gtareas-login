@@ -9,6 +9,8 @@
     <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/auth/registro.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/auth/restablecer.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
+    <script src="{{ asset('js/auth/plantilla.js') }}"></script>
     <title>Gestor de Tareas</title>
 </head>
 
@@ -23,8 +25,7 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/externos/jQuery.js') }}"></script>
-    <script src="{{ asset('js/auth/plantilla.js') }}"></script>
+
 </body>
 
 </html>

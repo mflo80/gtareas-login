@@ -164,6 +164,35 @@ input {
     background-color: #4a77d4;
 }
 
+.btn-secondary, .btn-secondary:hover {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+}
+
+.btn-secondary.active {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-secondary {
+    background-color: #dd3300; /* Rojo */
+    background-image: -moz-linear-gradient(top, #ce8181, #ff0000);
+    background-image: -ms-linear-gradient(top, #ce8181, #ff0000);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff0000), to(#ff0000));
+    background-image: -webkit-linear-gradient(top, #ce8181, #ff0000);
+    background-image: -o-linear-gradient(top, #ce8181, #ff0000);
+    background-image: linear-gradient(top, #ce8181, #ff0000);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr=#6eb6de, endColorstr=#4a77d4, GradientType=0);
+    border: 1px solid #000000;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+    box-shadow: inset 0 1px 0 rgba(27, 27, 27, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary.active, .btn-secondary.disabled, .btn-secondary[disabled] {
+    filter: none;
+    background-color: #ff0000; /* Un rojo más oscuro al pasar el ratón por encima */
+}
+
 .btn-block {
 	width: 43%;
     margin-top: 1rem;
@@ -189,7 +218,6 @@ input {
     background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
     background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
     background-image: linear-gradient(top, #ffffff, #e6e6e6);
-    border-color: #e6e6e6 #e6e6e6 #e6e6e6;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
