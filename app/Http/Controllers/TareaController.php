@@ -234,6 +234,7 @@ class TareaController extends Controller
         $tarea['fecha_hora_fin'] = $fechaHoraFin->format('Y-m-d H:i:s');
 
         $tarea['id_usuario'] = $usuario['id'];
+        $tarea['id_usuario_modificacion'] = $usuario['id'];
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
@@ -265,6 +266,7 @@ class TareaController extends Controller
         ]);
 
         $tarea['id_usuario'] = $usuario['id'];
+        $tarea['id_usuario_modificacion'] = $usuario['id'];
 
         $response = Http::withHeaders([
             "Accept" => "application/json",
