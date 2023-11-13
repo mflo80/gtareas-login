@@ -32,7 +32,9 @@
                             <tr>
                                 <td class="tarea-finaliza">
                                     <a>Finaliza:</a>
-                                    <span>{{ $tarea['fecha_hora_fin'] }}</span>
+                                    <span style="{{ \Carbon\Carbon::now() > $tarea['fecha_hora_fin'] ? 'color: red;' : '' }}">
+                                        {{ $tarea['fecha_hora_fin'] }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
